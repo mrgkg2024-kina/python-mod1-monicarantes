@@ -6,6 +6,8 @@ st.session_state
 st.title("Fundamentos de Programación utilizando Python y Streamlit")
 st.sidebar.title("Menú")
 
+modulo =st.sidebar.selectbox("Elija un módulo",["Home","Ejercicio 1","Ejercicio 2","Ejercicio 3","Ejercicio 4"])
+
 if modulo == "Home":
     
     # Datos del proyecto
