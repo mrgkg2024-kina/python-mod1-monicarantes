@@ -8,45 +8,32 @@ st.sidebar.title("Menú")
 
 modulo =st.sidebar.selectbox("Elija un módulo",["Home","Ejercicio 1","Ejercicio 2","Ejercicio 3","Ejercicio 4"])
 
-if modulo == "Home":
-    
-    # Datos del proyecto
-    datos_proyecto = {
-        "Título del proyecto": "Módulo 1 – Python Fundamentals",
-        "Nombre completo del estudiante": "Mónica Rantes García",
-        "Nombre del curso o módulo": "Especialización en Python for Analytics",
-        "Año": "2026",
-        "Breve descripción del objetivo del trabajo": "Desarrollar una aplicación interactiva en Streamlit que integre los conceptos fundamentales aprendidos durante el Módulo 1 del curso, incluyendo variables, estructuras de datos, control de flujo, funciones, programación funcional y programación orientada a objetos (POO).",
-        "Lista de tecnologías utilizadas": "Python, Streamlit, NumPy"
-    }
-    
-    # HTML mejorado
-    html_content = """
-    <style>
-        .home-container { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 3rem 2rem; border-radius: 15px; color: white; }
-        .info-card { background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-left: 5px solid #667eea; }
-        .info-card h3 { color: #667eea; margin: 0 0 1rem 0; }
-        .info-card p { color: #555; margin: 0; line-height: 1.6; }
-    </style>
-    
-    <div class="home-container">
-        <h1>🏠 Presentación del Proyecto</h1>
+  <section style="background:#ffffff; border:1px solid #e5e7eb; border-radius:12px; padding:20px; margin-top:12px;">
+    <h3 style="margin-top:0;">Datos del proyecto</h3>
+    <ul style="line-height:1.6; padding-left:18px;">
+      <li><strong>Nombre completo del estudiante:</strong> Mónica Rantes García</li>
+      <li><strong>Nombre del curso o módulo:</strong> Especialización en Python for Analytics</li>
+      <li><strong>Año:</strong> 2026</li>
+    </ul>
+  </section>
+
+  <section style="background:#ffffff; border:1px solid #e5e7eb; border-radius:12px; padding:20px; margin-top:12px;">
+    <h3 style="margin-top:0;">Objetivo</h3>
+    <p>
+      Desarrollar una aplicación interactiva en Streamlit que integre los conceptos fundamentales
+      aprendidos durante el Módulo 1 del curso, incluyendo variables, estructuras de datos, control
+      de flujo, funciones, programación funcional y programación orientada a objetos (POO).
+    </p>
+  </section>
+
+  <section style="background:#ffffff; border:1px solid #e5e7eb; border-radius:12px; padding:20px; margin-top:12px;">
+    <h3 style="margin-top:0;">Tecnologías utilizadas</h3>
+    <div style="display:flex; gap:8px; flex-wrap:wrap;">
+      <span style="background:#f3f4f6; border:1px solid #e5e7eb; padding:6px 10px; border-radius:999px;">Python</span>
+      <span style="background:#f3f4f6; border:1px solid #e5e7eb; padding:6px 10px; border-radius:999px;">Streamlit</span>
+      <span style="background:#f3f4f6; border:1px solid #e5e7eb; padding:6px 10px; border-radius:999px;">NumPy</span>
     </div>
-    
-    <div class="info-card">
-        <h3>Título</h3>
-        <p>Módulo 1 – Python Fundamentals</p>
-    </div>
-    
-    <div class="info-card">
-        <h3>Estudiante</h3>
-        <p>Mónica Rantes García</p>
-    </div>
-    
-    <div class="info-card">
-        <h3>Curso</h3>
-        <p>Especialización en Python for Analytics</p>
-    </div>
-    """
-    
-    st.markdown(html_content, unsafe_allow_html=True)
+  </section>
+</div>
+"""
+st.markdown(home_html, unsafe_allow_html=True)
