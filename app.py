@@ -6,9 +6,15 @@ st.session_state
 st.title("Fundamentos de Programación utilizando Python y Streamlit")
 st.sidebar.title("Menú")
 
-modulo =st.sidebar.selectbox("Elija un módulo",["Home","Ejercicio 1","Ejercicio 2","Ejercicio 3","Ejercicio 4"])
-
- del objetivo del trabajo": "Desarrollar una aplicación interactiva en Streamlit que integre los conceptos fundamentales aprendidos durante el Módulo 1 del curso, incluyendo variables, estructuras de datos, control de flujo, funciones, programación funcional y programación orientada a objetos (POO).",
+if modulo == "Home":
+    
+    # Datos del proyecto
+    datos_proyecto = {
+        "Título del proyecto": "Módulo 1 – Python Fundamentals",
+        "Nombre completo del estudiante": "Mónica Rantes García",
+        "Nombre del curso o módulo": "Especialización en Python for Analytics",
+        "Año": "2026",
+        "Breve descripción del objetivo del trabajo": "Desarrollar una aplicación interactiva en Streamlit que integre los conceptos fundamentales aprendidos durante el Módulo 1 del curso, incluyendo variables, estructuras de datos, control de flujo, funciones, programación funcional y programación orientada a objetos (POO).",
         "Lista de tecnologías utilizadas": "Python, Streamlit, NumPy"
     }
     
