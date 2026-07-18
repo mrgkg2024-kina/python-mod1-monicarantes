@@ -13,5 +13,6 @@ if modulo == "Home":
     st.header("Módulo Home – Presentación del Proyecto")
 
     st.info(
-        "Título del proyecto: Módulo 1 – Python Fundamentals"
+        "Título del proyecto            : Módulo 1 – Python Fundamentals"
+        "Nombre completo del estudiante : Mónica Rantes García"
     )
