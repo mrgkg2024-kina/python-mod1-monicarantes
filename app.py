@@ -10,13 +10,6 @@ modulo =st.sidebar.selectbox("Elija un módulo",["Home","Ejercicio 1","Ejercicio
 
 if modulo == "Home":
     
-    # Título principal
-    st.markdown("""
-    <div class="main-title">
-        <h1>🏠 Presentación del Proyecto</h1>
-    </div>
-    """, unsafe_allow_html=True)
-    
     # Datos del proyecto
     datos_proyecto = {
         "Título del proyecto": "Módulo 1 – Python Fundamentals",
@@ -27,22 +20,36 @@ if modulo == "Home":
         "Lista de tecnologías utilizadas": "Python, Streamlit, NumPy"
     }
     
-    # Información principal en tarjeta grande
-    with st.container():
-        col1, col2, col3 = st.columns(3)
+    # HTML mejorado
+    html_content = """
+    <style>
+        .home-container {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            color: white;
+            margin-bottom: 2rem;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+        .home-container h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
         
-        with col1:
-            st.metric("📚 Curso", "Python for\nAnalytics")
-        with col2:
-            st.metric("👤 Estudiante", "Mónica Rantes\nGarcía")
-        with col3:
-            st.metric("📅 Año", "2026")
-    
-    st.divider()
-    
-    # Detalles del proyecto
-    for idx, (clave, valor) in enumerate(datos_proyecto.items(), 1):
-        with st.expander(f"📋 {clave}", expanded=(idx == 1)):
-            st.write(valor)
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .info-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-left: 5px solid #667eea;
     
    
