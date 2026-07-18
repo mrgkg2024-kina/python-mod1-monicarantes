@@ -10,7 +10,7 @@ modulo =st.sidebar.selectbox("Elija un módulo",["Home","Ejercicio 1","Ejercicio
 
 if modulo == "Home":
     
-    # Título principal con estilo
+    # Título principal
     st.markdown("""
     <div class="main-title">
         <h1>🏠 Presentación del Proyecto</h1>
@@ -27,26 +27,22 @@ if modulo == "Home":
         "Lista de tecnologías utilizadas": "Python, Streamlit, NumPy"
     }
     
-    # Mostrar datos en contenedores individuales
-    col1, col2 = st.columns([3, 1])
+    # Información principal en tarjeta grande
+    with st.container():
+        col1, col2, col3 = st.columns(3)
+        
+        with col1:
+            st.metric("📚 Curso", "Python for\nAnalytics")
+        with col2:
+            st.metric("👤 Estudiante", "Mónica Rantes\nGarcía")
+        with col3:
+            st.metric("📅 Año", "2026")
     
-    with col1:
-        for clave, valor in datos_proyecto.items():
-            with st.container():
-                st.markdown(f"### 📌 {clave}")
-                st.write(valor)
-                st.divider()
+    st.divider()
     
-    with col2:
-        st.markdown("### 📊 Resumen Rápido")
-        st.info(f"""
-        **Estudiante:** Mónica Rantes García
-        
-        **Curso:** Python for Analytics
-        
-        **Año:** 2026
-        
-        **Tecnologías:** 3
-        """)
+    # Detalles del proyecto
+    for idx, (clave, valor) in enumerate(datos_proyecto.items(), 1):
+        with st.expander(f"📋 {clave}", expanded=(idx == 1)):
+            st.write(valor)
     
    
