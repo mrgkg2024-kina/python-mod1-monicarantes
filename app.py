@@ -19,4 +19,4 @@ if modulo == "Home":
     st.write("Breve descripción del objetivo del trabajo : Desarrollar una aplicación interactiva en Streamlit que integre los conceptos fundamentales aprendidos durante el Módulo 1 del curso, incluyendo variables,estructuras de datos, control de flujo, funciones,programación funcional y programación orientada a objetos (POO). ")
     st.write("Lista de tecnologías utilizadas: Python, Streamlit, NumPy")        
     
-    )
+   
