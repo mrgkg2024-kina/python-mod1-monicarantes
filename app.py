@@ -6,7 +6,18 @@ st.set_page_config(page_title="Fundamentos de Programación - Python y Streamlit
 st.title("Fundamentos de Programación utilizando Python y Streamlit")
 st.sidebar.title("Menú")
 
+
+# *********************************************
+# NAVEGACIÓN ENTRE LAS OPCIONES DEL MENU
+# *********************************************
+
+# Creamos un selectbox en la barra lateral.
+
 modulo = st.sidebar.selectbox("Elija un módulo", ["Home", "Ejercicio 1", "Ejercicio 2", "Ejercicio 3", "Ejercicio 4"])
+
+# *********************************************
+# HOME
+# *********************************************
 
 if modulo == "Home":
     home_html = dedent("""
@@ -39,3 +50,12 @@ if modulo == "Home":
     </div>
     """)
     st.components.v1.html(home_html, height=650, scrolling=True)
+
+# *********************************************
+# EJERCICIO 1
+# *********************************************
+
+elif modulo ="Ejercicio 1":
+    valor_presupuesto =st.number_input("Ingrese el valor del presupuesto: ", value =0)
+    valor_gasto =st.number_input("Ingrese el valor del gasto:v", value=0 )
+
