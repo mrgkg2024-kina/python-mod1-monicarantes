@@ -58,7 +58,7 @@ if modulo == "Home":
 elif modulo == "Ejercicio 1":
     st.subheader("Ejercicio 1")
     valor_presupuesto =st.number_input("Ingrese el valor del presupuesto: ", value =0)
-    valor_gasto =st.number_input("Ingrese el valor del gasto:v", value=0 )
+    valor_gasto =st.number_input("Ingrese el valor del gasto:", value=0 )
     resultado = valor_presupuesto - valor_gasto 
     if st.button("Evaluar"):
         if resultado >= 0 :
