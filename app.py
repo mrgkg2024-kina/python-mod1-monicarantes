@@ -55,7 +55,7 @@ if modulo == "Home":
 # EJERCICIO 1
 # *********************************************
 
-elif modulo ="Ejercicio 1":
+elif modulo == "Ejercicio 1":
     valor_presupuesto =st.number_input("Ingrese el valor del presupuesto: ", value =0)
     valor_gasto =st.number_input("Ingrese el valor del gasto:v", value=0 )
 
