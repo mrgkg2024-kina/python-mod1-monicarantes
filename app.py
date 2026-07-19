@@ -66,5 +66,15 @@ elif modulo == "Ejercicio 1":
         else:
             st.warning("El gasto está fuera del presupuesto")
         st.write("Presupuesto - Gasto = ", resultado)
-            
+
+elif modulo == "Ejercicio 2":
+    st.subheader("Ejercicio 2")
+    st.info("Por cada actividad a registrar, ingrese los siguientes datos:") 
+    actividad = st.text_input("Nombre o descripción:")
+    tipo = st.text_input("Tipo:")
+    presupuesto = st.number_input("Presupuesto:")
+    gasto = st.number_input("Gasto:")
+    
+
+    
                     
