@@ -75,7 +75,7 @@ elif modulo == "Ejercicio 1":
         lista_mov.append(movimiento)
         
     if st.button ("Mostrar movimientos"):
-        tabla = pd.Dataframe(lista_mov,columns=["Concepto","Tipo","Valor"])
+        tabla = pd.DataFrame(lista_mov,columns=["Concepto","Tipo","Valor"])
         st.subheader("Movimientos Financieros")
         st.dataframe(tabla)
     
