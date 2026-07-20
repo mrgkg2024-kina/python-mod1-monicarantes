@@ -88,9 +88,12 @@ elif modulo == "Ejercicio 1":
     with col2:                 
         if st.button("Mostrar movimientos"):
             if ss.lista_mov:
-                st.dataframe(
-                    pd.DataFrame(ss.lista_mov, columns=["Concepto", "Tipo", "Valor"]),
-                    use_container_width=True)
+                #st.dataframe(
+                #    pd.DataFrame(ss.lista_mov, columns=["Concepto", "Tipo", "Valor"]),
+                #    use_container_width=True)
+
+                df = pd.DataFrame(ss.lista_mov, columns=["Concepto", "Tipo", "Valor"])
+                st.dataframe(df, use_container_width=True)
                      
                 suma_ingresos = df.loc[df["Tipo"] == "Ingreso", "Valor"].sum()
                 suma_gastos = df.loc[df["Tipo"] == "Gasto", "Valor"].sum()
