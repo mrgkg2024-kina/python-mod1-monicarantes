@@ -65,8 +65,8 @@ elif modulo == "Ejercicio 1":
     ss.setdefault("flash_msg", None)
 
     if ss.flash_msg:
-    st.success(ss.flash_msg)
-    ss.flash_msg = None
+        st.success(ss.flash_msg)
+        ss.flash_msg = None
     
     # Si toca limpiar, hacerlo ANTES de crear los widgets
     if ss.reset_inputs:
