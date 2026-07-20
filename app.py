@@ -69,6 +69,7 @@ elif modulo == "Ejercicio 1":
         ss["tipo_key"] = "Ingreso"
         ss["valor_key"] = 0.0
         ss.reset_inputs = False  # desactivar flag
+       
     
     # Campos de entrada usando session state
     concepto_mov = st.text_input("Concepto:", key="concepto_key")
@@ -81,6 +82,12 @@ elif modulo == "Ejercicio 1":
             if concepto_mov and valor_mov != 0:
                 movimiento = [concepto_mov, tipo_mov, valor_mov]
                 ss.lista_mov.append([concepto_mov, tipo_mov, valor_mov])
+                
+                if tipo_mov == "Ingreso":
+                    suma_ingreso = suma_ingreso + valor_mov
+                else:
+                    suma_gasto = suma_gasto + valor_mov
+                
                 ss.reset_inputs = True   # marcar para limpiar
                 st.rerun()
                 
@@ -91,18 +98,19 @@ elif modulo == "Ejercicio 1":
                         pd.DataFrame(ss.lista_mov, columns=["Concepto", "Tipo", "Valor"]),
                         use_container_width=True)
 
-                    st.write("Total de ingresos = ", df[df['Tipo'] == 'Ingreso']['Monto'].sum() )
-                    st.write("Total de gastos = ", df[df['Tipo'] == 'Gasto']['Monto'].sum() )  
-                    saldo_final = df[df['Tipo'] == 'Ingreso']['Monto'].sum()  - df[df['Tipo'] == 'Gasto']['Monto'].sum()   
+                    st.write("Total de ingresos = ", suma_ingreso )
+                    st.write("Total de gastos = ", suma_gasto )  
+                    saldo_final = suma_ingreso - suma_gasto   
                     st.write("Saldo final = ", saldo_final)
                 
             else:
                 st.info("No hay movimientos")
                 
     if st.button("🗑️ Limpiar todo"):
-       ss.lista_mov = []
-       ss.reset_inputs = True
-       st.rerun()
+        suma_ingreso = suma_gasto = 0  
+        ss.lista_mov = []
+        ss.reset_inputs = True
+        st.rerun()
     
 elif modulo == "Ejercicio 2":
     st.subheader("Ejercicio 2")
