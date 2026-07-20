@@ -7,15 +7,7 @@ st.set_page_config(page_title="Fundamentos de Programación - Python y Streamlit
 st.title("Fundamentos de Programación utilizando Python y Streamlit")
 st.sidebar.title("Menú")
 
-# *********************************************
-# INICIALIZACIÓN VALORES
-# *********************************************
-if 'concepto_input' not in st.session_state:
-    st.session_state.concepto_input = ""
-if 'tipo_input' not in st.session_state:
-    st.session_state.tipo_input = ""
-if 'valor_input' not in st.session_state:
-    st.session_state.valor_input = 0.0
+
 # *********************************************
 # NAVEGACIÓN ENTRE LAS OPCIONES DEL MENU
 # *********************************************
@@ -66,7 +58,16 @@ if modulo == "Home":
 
 elif modulo == "Ejercicio 1":
     st.subheader("Ejercicio 1")
-    # Inicializar session state para la lista
+       
+    # *********************************************
+    # INICIALIZACIÓN VALORES
+    # *********************************************
+    if 'concepto_input' not in st.session_state:
+        st.session_state.concepto_input = ""
+    if 'tipo_input' not in st.session_state:
+        st.session_state.tipo_input = ""
+    if 'valor_input' not in st.session_state:
+        st.session_state.valor_input = 0.0
     if 'lista_mov' not in st.session_state:
         st.session_state.lista_mov = []
     
