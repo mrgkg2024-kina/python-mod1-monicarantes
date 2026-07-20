@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 from textwrap import dedent
 
 st.set_page_config(page_title="Fundamentos de Programación - Python y Streamlit", layout="centered")
@@ -71,9 +72,11 @@ elif modulo == "Ejercicio 1":
     movimiento = [concepto_mov,tipo_mov,valor_mov]
 
     if st.button("Evaluar"):
-        lista_mov.append(movimento)
+        lista_mov.append(movimiento)
         
-    #st.write("Presupuesto - Gasto = ", resultado)
+    if st.button ("Mostrar movimientos"):
+        tabla = pd.Dataframe(lista_mov,columns=["Concepto","Tipo","Valor"])
+        st.write(tabla)
     
 elif modulo == "Ejercicio 2":
     st.subheader("Ejercicio 2")
