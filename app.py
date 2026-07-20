@@ -74,23 +74,31 @@ elif modulo == "Ejercicio 1":
     concepto_mov = st.text_input("Concepto:", key="concepto_key")
     tipo_mov = st.selectbox("Tipo:", ["Ingreso", "Gasto"], key="tipo_key")
     valor_mov = st.number_input("Valor:", value=0.0, key="valor_key")
-    
-    if st.button("Registrar movimiento"):
-        if concepto_mov and valor_mov != 0:
-            movimiento = [concepto_mov, tipo_mov, valor_mov]
-            ss.lista_mov.append([concepto_mov, tipo_mov, valor_mov])
-            ss.reset_inputs = True   # marcar para limpiar
+
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        if st.button("Registrar movimiento"):
+            if concepto_mov and valor_mov != 0:
+                movimiento = [concepto_mov, tipo_mov, valor_mov]
+                ss.lista_mov.append([concepto_mov, tipo_mov, valor_mov])
+                ss.reset_inputs = True   # marcar para limpiar
+                st.rerun()
+                
+    with col2:                 
+        if st.button("Mostrar movimientos"):
+            if ss.lista_mov:
+                    st.dataframe(
+                        pd.DataFrame(ss.lista_mov, columns=["Concepto", "Tipo", "Valor"]),
+                        use_container_width=True
+                    )
+            else:
+                st.info("No hay movimientos")
+
+    with col3:
+         if st.button("🗑️ Limpiar todo"):
+            ss.lista_mov = []
+            ss.reset_inputs = True
             st.rerun()
-            
-                 
-    if st.button("Mostrar movimientos"):
-        if ss.lista_mov:
-                st.dataframe(
-                    pd.DataFrame(ss.lista_mov, columns=["Concepto", "Tipo", "Valor"]),
-                    use_container_width=True
-                )
-        else:
-            st.info("No hay movimientos")
     
 elif modulo == "Ejercicio 2":
     st.subheader("Ejercicio 2")
