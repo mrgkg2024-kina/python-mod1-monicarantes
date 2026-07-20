@@ -90,6 +90,11 @@ elif modulo == "Ejercicio 1":
                     st.dataframe(
                         pd.DataFrame(ss.lista_mov, columns=["Concepto", "Tipo", "Valor"]),
                         use_container_width=True
+
+                    st.write("Total de ingresos = ", df[df['Tipo'] == 'Ingreso']['Monto'].sum() )
+                    st.write("Total de gastos = ", df[df['Tipo'] == 'Gasto']['Monto'].sum() )  
+                    saldo_final = df[df['Tipo'] == 'Ingreso']['Monto'].sum()  - df[df['Tipo'] == 'Gasto']['Monto'].sum()   
+                    st.write("Saldo final = ", saldo_final)
                     )
             else:
                 st.info("No hay movimientos")
