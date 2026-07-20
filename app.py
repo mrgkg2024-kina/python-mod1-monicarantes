@@ -11,7 +11,7 @@ st.sidebar.title("Menú")
 # INICIALIZACIÓN DE LISTA
 # *********************************************
 #movimiento = []
-#lista_mov = []
+lista_mov = []
 
 # *********************************************
 # NAVEGACIÓN ENTRE LAS OPCIONES DEL MENU
