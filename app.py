@@ -62,8 +62,7 @@ elif modulo == "Ejercicio 1":
     ss = st.session_state
     ss.setdefault("lista_mov", [])
     ss.setdefault("reset_inputs", False)
-    suma_ingreso = suma_gasto = 0  
-
+    
     # Si toca limpiar, hacerlo ANTES de crear los widgets
     if ss.reset_inputs:
         ss["concepto_key"] = ""
@@ -82,33 +81,29 @@ elif modulo == "Ejercicio 1":
         if st.button("Registrar movimiento"):
             if concepto_mov and valor_mov != 0:
                 movimiento = [concepto_mov, tipo_mov, valor_mov]
-                ss.lista_mov.append([concepto_mov, tipo_mov, valor_mov])
-                
-                if ss.tipo_mov == "Ingreso":
-                    suma_ingreso = suma_ingreso + ss.valor_mov
-                else:
-                    suma_gasto = suma_gasto + ss.valor_mov
-                
+                ss.lista_mov.append([concepto_mov, tipo_mov, float(valor_mov)])
                 ss.reset_inputs = True   # marcar para limpiar
                 st.rerun()
                 
     with col2:                 
         if st.button("Mostrar movimientos"):
             if ss.lista_mov:
-                    st.dataframe(
-                        pd.DataFrame(ss.lista_mov, columns=["Concepto", "Tipo", "Valor"]),
-                        use_container_width=True)
+                st.dataframe(
+                    pd.DataFrame(ss.lista_mov, columns=["Concepto", "Tipo", "Valor"]),
+                    use_container_width=True)
+                     
+                    suma_ingresos = df.loc[df["Tipo"] == "Ingreso", "Valor"].sum()
+                    suma_gastos = df.loc[df["Tipo"] == "Gasto", "Valor"].sum()
+                    saldo_final = suma_ingresos - suma_gastos
 
-                    st.write("Total de ingresos = ", suma_ingreso )
-                    st.write("Total de gastos = ", suma_gasto )  
-                    saldo_final = suma_ingreso - suma_gasto   
+                    st.write("Total de ingresos = ", suma_ingresos )
+                    st.write("Total de gastos = ", suma_gastos )  
                     st.write("Saldo final = ", saldo_final)
                 
             else:
                 st.info("No hay movimientos")
                 
     if st.button("🗑️ Limpiar todo"):
-        suma_ingreso = suma_gasto = 0  
         ss.lista_mov = []
         ss.reset_inputs = True
         st.rerun()
