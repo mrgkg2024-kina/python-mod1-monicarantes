@@ -76,7 +76,8 @@ elif modulo == "Ejercicio 1":
         
     if st.button ("Mostrar movimientos"):
         tabla = pd.Dataframe(lista_mov,columns=["Concepto","Tipo","Valor"])
-        st.write(tabla)
+        st.subheader("Movimientos Financieros")
+        st.dataframe(tabla)
     
 elif modulo == "Ejercicio 2":
     st.subheader("Ejercicio 2")
