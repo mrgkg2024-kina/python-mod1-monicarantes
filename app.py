@@ -65,7 +65,7 @@ elif modulo == "Ejercicio 1":
     if 'concepto_input' not in st.session_state:
         st.session_state.concepto_input = ""
     if 'tipo_input' not in st.session_state:
-        st.session_state.tipo_input = ""
+        st.session_state.tipo_input = "Ingreso"
     if 'valor_input' not in st.session_state:
         st.session_state.valor_input = 0.0
     if 'lista_mov' not in st.session_state:
@@ -95,7 +95,7 @@ elif modulo == "Ejercicio 1":
             st.session_state.concepto_input = ""
             st.session_state.tipo_input = "Ingreso"
             st.session_state.valor_input = 0.0
-   
+            st.rerun() #Para que se vean los campos limpios   
         
     if st.button("Mostrar movimientos"):
         if st.session_state.lista_mov:
