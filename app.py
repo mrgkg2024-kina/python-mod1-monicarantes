@@ -62,6 +62,11 @@ elif modulo == "Ejercicio 1":
     ss = st.session_state
     ss.setdefault("lista_mov", [])
     ss.setdefault("reset_inputs", False)
+    ss.setdefault("flash_msg", None)
+
+    if ss.flash_msg:
+    st.success(ss.flash_msg)
+    ss.flash_msg = None
     
     # Si toca limpiar, hacerlo ANTES de crear los widgets
     if ss.reset_inputs:
@@ -82,8 +87,8 @@ elif modulo == "Ejercicio 1":
             if concepto_mov and valor_mov != 0:
                 movimiento = [concepto_mov, tipo_mov, valor_mov]
                 ss.lista_mov.append([concepto_mov, tipo_mov, float(valor_mov)])
-                st.success("Movimiento registrado")
                 ss.reset_inputs = True   # marcar para limpiar
+                ss.flash_msg = "Movimiento registrado"   # <- mensaje
                 st.rerun()
                 
     with col2:                 
