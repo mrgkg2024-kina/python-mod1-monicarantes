@@ -92,13 +92,13 @@ elif modulo == "Ejercicio 1":
                     pd.DataFrame(ss.lista_mov, columns=["Concepto", "Tipo", "Valor"]),
                     use_container_width=True)
                      
-                    suma_ingresos = df.loc[df["Tipo"] == "Ingreso", "Valor"].sum()
-                    suma_gastos = df.loc[df["Tipo"] == "Gasto", "Valor"].sum()
-                    saldo_final = suma_ingresos - suma_gastos
+                suma_ingresos = df.loc[df["Tipo"] == "Ingreso", "Valor"].sum()
+                suma_gastos = df.loc[df["Tipo"] == "Gasto", "Valor"].sum()
+                saldo_final = suma_ingresos - suma_gastos
 
-                    st.write("Total de ingresos = ", suma_ingresos )
-                    st.write("Total de gastos = ", suma_gastos )  
-                    st.write("Saldo final = ", saldo_final)
+                st.write("Total de ingresos = ", suma_ingresos )
+                st.write("Total de gastos = ", suma_gastos )  
+                st.write("Saldo final = ", saldo_final)
                 
             else:
                 st.info("No hay movimientos")
