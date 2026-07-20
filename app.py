@@ -82,6 +82,7 @@ elif modulo == "Ejercicio 1":
             if concepto_mov and valor_mov != 0:
                 movimiento = [concepto_mov, tipo_mov, valor_mov]
                 ss.lista_mov.append([concepto_mov, tipo_mov, float(valor_mov)])
+                st.success("Movimiento registrado")
                 ss.reset_inputs = True   # marcar para limpiar
                 st.rerun()
                 
