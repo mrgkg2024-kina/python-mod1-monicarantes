@@ -6,6 +6,11 @@ st.set_page_config(page_title="Fundamentos de Programación - Python y Streamlit
 st.title("Fundamentos de Programación utilizando Python y Streamlit")
 st.sidebar.title("Menú")
 
+# *********************************************
+# INICIALIZACIÓN DE LISTA
+# *********************************************
+movimiento == []
+lista_mov ==[]
 
 # *********************************************
 # NAVEGACIÓN ENTRE LAS OPCIONES DEL MENU
@@ -56,17 +61,20 @@ if modulo == "Home":
 # *********************************************
 
 elif modulo == "Ejercicio 1":
+    
     st.subheader("Ejercicio 1")
-    valor_presupuesto =st.number_input("Ingrese el valor del presupuesto: ", value =0)
-    valor_gasto =st.number_input("Ingrese el valor del gasto:", value=0 )
-    resultado = valor_presupuesto - valor_gasto 
-    if st.button("Evaluar"):
-        if resultado >= 0 :
-            st.success("El gasto está dentro del presupuesto")
-        else:
-            st.warning("El gasto está fuera del presupuesto")
-        st.write("Presupuesto - Gasto = ", resultado)
 
+    concepto_mov = st.text_input("Concepto:")
+    tipo_mov = st.selectbox_input("Tipo:", ["Ingreso","Gasto"])
+    valor_mov = st.number_input("Valor:" ) 
+    
+    movimiento == [concepto_mov,tipo_mov,valor_mov]
+
+    if st.button("Evaluar"):
+        lista_mov.append(movimento)
+        
+    #st.write("Presupuesto - Gasto = ", resultado)
+    
 elif modulo == "Ejercicio 2":
     st.subheader("Ejercicio 2")
     st.info("Por cada actividad a registrar, ingrese los siguientes datos:") 
