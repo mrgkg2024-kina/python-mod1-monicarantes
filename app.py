@@ -65,7 +65,7 @@ elif modulo == "Ejercicio 1":
     st.subheader("Ejercicio 1")
 
     concepto_mov = st.text_input("Concepto:")
-    tipo_mov = st.selectbox_input("Tipo:", ["Ingreso","Gasto"])
+    tipo_mov = st.selectbox("Tipo:", ["Ingreso","Gasto"])
     valor_mov = st.number_input("Valor:" ) 
     
     movimiento = [concepto_mov,tipo_mov,valor_mov]
