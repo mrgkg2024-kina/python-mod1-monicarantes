@@ -9,8 +9,8 @@ st.sidebar.title("Menú")
 # *********************************************
 # INICIALIZACIÓN DE LISTA
 # *********************************************
-movimiento == []
-lista_mov ==[]
+movimiento = []
+lista_mov = []
 
 # *********************************************
 # NAVEGACIÓN ENTRE LAS OPCIONES DEL MENU
@@ -68,7 +68,7 @@ elif modulo == "Ejercicio 1":
     tipo_mov = st.selectbox_input("Tipo:", ["Ingreso","Gasto"])
     valor_mov = st.number_input("Valor:" ) 
     
-    movimiento == [concepto_mov,tipo_mov,valor_mov]
+    movimiento = [concepto_mov,tipo_mov,valor_mov]
 
     if st.button("Evaluar"):
         lista_mov.append(movimento)
