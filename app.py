@@ -79,6 +79,12 @@ elif modulo == "Ejercicio 1":
             movimiento = [concepto_mov, tipo_mov, valor_mov]
             st.session_state.lista_mov.append(movimiento)
             st.success("Registrado!")
+            
+            # Limpiar los campos
+            st.session_state.concepto_input = ""
+            st.session_state.tipo_input = "Ingreso"
+            st.session_state.valor_input = 0.0
+   
         
     if st.button("Mostrar movimientos"):
         if st.session_state.lista_mov:
