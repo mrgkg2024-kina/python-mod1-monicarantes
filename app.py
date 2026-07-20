@@ -62,6 +62,7 @@ elif modulo == "Ejercicio 1":
     ss = st.session_state
     ss.setdefault("lista_mov", [])
     ss.setdefault("reset_inputs", False)
+    suma_ingreso = suma_gasto = 0  
 
     # Si toca limpiar, hacerlo ANTES de crear los widgets
     if ss.reset_inputs:
