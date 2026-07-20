@@ -59,17 +59,16 @@ if modulo == "Home":
 elif modulo == "Ejercicio 1":
     st.subheader("Ejercicio 1")
        
-    # *********************************************
-    # INICIALIZACIÓN VALORES
-    # *********************************************
-    if 'concepto_input' not in st.session_state:
-        st.session_state.concepto_input = ""
-    if 'tipo_input' not in st.session_state:
-        st.session_state.tipo_input = "Ingreso"
-    if 'valor_input' not in st.session_state:
-        st.session_state.valor_input = 0.0
-    if 'lista_mov' not in st.session_state:
-        st.session_state.lista_mov = []
+    ss = st.session_state
+    ss.setdefault("lista_mov", [])
+    ss.setdefault("reset_inputs", False)
+
+    # Si toca limpiar, hacerlo ANTES de crear los widgets
+    if ss.reset_inputs:
+        ss["concepto_key"] = ""
+        ss["tipo_key"] = "Ingreso"
+        ss["valor_key"] = 0.0
+        ss.reset_inputs = False  # desactivar flag
     
     # Campos de entrada usando session state
     concepto_mov = st.text_input("Concepto:", key="concepto_key")
@@ -79,19 +78,17 @@ elif modulo == "Ejercicio 1":
     if st.button("Registrar movimiento"):
         if concepto_mov and valor_mov != 0:
             movimiento = [concepto_mov, tipo_mov, valor_mov]
-            st.session_state.lista_mov.append(movimiento)
-            st.success("Registrado!")
+            ss.lista_mov.append([concepto_mov, tipo_mov, valor_mov])
+            ss.reset_inputs = True   # marcar para limpiar
+            st.rerun()
             
-            # Limpiar los campos
-            st.session_state.concepto_key = ""
-            st.session_state.tipo_key = "Ingreso"
-            st.session_state.valor_key = 0.0
-            st.rerun() 
-        
+                 
     if st.button("Mostrar movimientos"):
-        if st.session_state.lista_mov:
-            tabla = pd.DataFrame(st.session_state.lista_mov, columns=["Concepto", "Tipo", "Valor"])
-            st.dataframe(tabla)
+        if ss.lista_mov:
+                st.dataframe(
+                    pd.DataFrame(ss.lista_mov, columns=["Concepto", "Tipo", "Valor"]),
+                    use_container_width=True
+                )
         else:
             st.info("No hay movimientos")
     
