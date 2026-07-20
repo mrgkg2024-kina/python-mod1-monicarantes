@@ -62,22 +62,27 @@ if modulo == "Home":
 # *********************************************
 
 elif modulo == "Ejercicio 1":
-    lista_mov = []
     st.subheader("Ejercicio 1")
-
+    # Inicializar session state para la lista
+    if 'lista_mov' not in st.session_state:
+        st.session_state.lista_mov = []
+    
     concepto_mov = st.text_input("Concepto:")
     tipo_mov = st.selectbox("Tipo:", ["Ingreso","Gasto"])
     valor_mov = st.number_input("Valor:" ) 
     
-    movimiento = [concepto_mov,tipo_mov,valor_mov]
-
     if st.button("Registrar movimiento"):
-        lista_mov.append(movimiento)
+        if concepto_mov and valor_mov != 0:
+            movimiento = [concepto_mov, tipo_mov, valor_mov]
+            st.session_state.lista_mov.append(movimiento)
+            st.success("Registrado!")
         
-    if st.button ("Mostrar movimientos"):
-        tabla = pd.DataFrame(lista_mov,columns=["Concepto","Tipo","Valor"])
-        st.subheader("Movimientos Financieros")
-        st.dataframe(tabla)
+    if st.button("Mostrar movimientos"):
+        if st.session_state.lista_mov:
+            tabla = pd.DataFrame(st.session_state.lista_mov, columns=["Concepto", "Tipo", "Valor"])
+            st.dataframe(tabla)
+        else:
+            st.info("No hay movimientos")
     
 elif modulo == "Ejercicio 2":
     st.subheader("Ejercicio 2")
