@@ -72,18 +72,9 @@ elif modulo == "Ejercicio 1":
         st.session_state.lista_mov = []
     
     # Campos de entrada usando session state
-    concepto_mov = st.text_input("Concepto:", 
-                                value=st.session_state.concepto_input,
-                                key="concepto_key")
-    
-    tipo_mov = st.selectbox("Tipo:", 
-                           ["Ingreso", "Gasto"],
-                           index=0 if st.session_state.tipo_input == "Ingreso" else 1,
-                           key="tipo_key")
-    
-    valor_mov = st.number_input("Valor:", 
-                               value=st.session_state.valor_input,
-                               key="valor_key")
+    concepto_mov = st.text_input("Concepto:", key="concepto_key")
+    tipo_mov = st.selectbox("Tipo:", ["Ingreso", "Gasto"], key="tipo_key")
+    valor_mov = st.number_input("Valor:", value=0.0, key="valor_key")
     
     if st.button("Registrar movimiento"):
         if concepto_mov and valor_mov != 0:
@@ -92,10 +83,10 @@ elif modulo == "Ejercicio 1":
             st.success("Registrado!")
             
             # Limpiar los campos
-            st.session_state.concepto_input = ""
-            st.session_state.tipo_input = "Ingreso"
-            st.session_state.valor_input = 0.0
-            st.rerun() #Para que se vean los campos limpios   
+            st.session_state.concepto_key = ""
+            st.session_state.tipo_key = "Ingreso"
+            st.session_state.valor_key = 0.0
+            st.rerun() 
         
     if st.button("Mostrar movimientos"):
         if st.session_state.lista_mov:
