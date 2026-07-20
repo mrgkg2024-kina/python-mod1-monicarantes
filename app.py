@@ -10,8 +10,8 @@ st.sidebar.title("Menú")
 # *********************************************
 # INICIALIZACIÓN DE LISTA
 # *********************************************
-movimiento = []
-lista_mov = []
+#movimiento = []
+#lista_mov = []
 
 # *********************************************
 # NAVEGACIÓN ENTRE LAS OPCIONES DEL MENU
@@ -71,7 +71,7 @@ elif modulo == "Ejercicio 1":
     
     movimiento = [concepto_mov,tipo_mov,valor_mov]
 
-    if st.button("Evaluar"):
+    if st.button("Registrar movimiento"):
         lista_mov.append(movimiento)
         
     if st.button ("Mostrar movimientos"):
