@@ -8,11 +8,14 @@ st.title("Fundamentos de Programación utilizando Python y Streamlit")
 st.sidebar.title("Menú")
 
 # *********************************************
-# INICIALIZACIÓN DE LISTA
+# INICIALIZACIÓN VALORES
 # *********************************************
-#movimiento = []
-
-
+if 'concepto_input' not in st.session_state:
+    st.session_state.concepto_input = ""
+if 'tipo_input' not in st.session_state:
+    st.session_state.tipo_input = ""
+if 'valor_input' not in st.session_state:
+    st.session_state.valor_input = 0.0
 # *********************************************
 # NAVEGACIÓN ENTRE LAS OPCIONES DEL MENU
 # *********************************************
