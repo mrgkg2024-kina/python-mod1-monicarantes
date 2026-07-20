@@ -84,10 +84,10 @@ elif modulo == "Ejercicio 1":
                 movimiento = [concepto_mov, tipo_mov, valor_mov]
                 ss.lista_mov.append([concepto_mov, tipo_mov, valor_mov])
                 
-                if tipo_mov == "Ingreso":
-                    suma_ingreso = suma_ingreso + valor_mov
+                if ss.tipo_mov == "Ingreso":
+                    suma_ingreso = suma_ingreso + ss.valor_mov
                 else:
-                    suma_gasto = suma_gasto + valor_mov
+                    suma_gasto = suma_gasto + ss.valor_mov
                 
                 ss.reset_inputs = True   # marcar para limpiar
                 st.rerun()
