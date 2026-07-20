@@ -70,9 +70,19 @@ elif modulo == "Ejercicio 1":
     if 'lista_mov' not in st.session_state:
         st.session_state.lista_mov = []
     
-    concepto_mov = st.text_input("Concepto:")
-    tipo_mov = st.selectbox("Tipo:", ["Ingreso","Gasto"])
-    valor_mov = st.number_input("Valor:" ) 
+    # Campos de entrada usando session state
+    concepto_mov = st.text_input("Concepto:", 
+                                value=st.session_state.concepto_input,
+                                key="concepto_key")
+    
+    tipo_mov = st.selectbox("Tipo:", 
+                           ["Ingreso", "Gasto"],
+                           index=0 if st.session_state.tipo_input == "Ingreso" else 1,
+                           key="tipo_key")
+    
+    valor_mov = st.number_input("Valor:", 
+                               value=st.session_state.valor_input,
+                               key="valor_key")
     
     if st.button("Registrar movimiento"):
         if concepto_mov and valor_mov != 0:
