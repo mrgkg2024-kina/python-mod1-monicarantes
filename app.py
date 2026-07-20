@@ -11,7 +11,7 @@ st.sidebar.title("Menú")
 # INICIALIZACIÓN DE LISTA
 # *********************************************
 #movimiento = []
-lista_mov = []
+
 
 # *********************************************
 # NAVEGACIÓN ENTRE LAS OPCIONES DEL MENU
@@ -62,7 +62,7 @@ if modulo == "Home":
 # *********************************************
 
 elif modulo == "Ejercicio 1":
-    
+    lista_mov = []
     st.subheader("Ejercicio 1")
 
     concepto_mov = st.text_input("Concepto:")
