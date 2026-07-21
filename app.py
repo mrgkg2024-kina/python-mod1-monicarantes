@@ -131,7 +131,7 @@ elif modulo == "Ejercicio 2":
 
        
     nombre_prod = st.text_input("Nombre del producto:", key="nombre_prod_key")
-    categoria = st.selectbox("Categoria:", ["Electrónicos", "Ropa", "Hogar", "Deportes"], key="categoria_key")
+    categoria = st.selectbox("Categoria:", ["Electrónico", "Ropa", "Hogar", "Deportes"], key="categoria_key")
     precio = st.number_input("Precio:", min_value=0.0, format="%.2f", key="precio_key")
     cantidad = st.number_input("Cantidad:", value=1, key="cantidad_key")
     total = precio * cantidad
@@ -147,7 +147,14 @@ elif modulo == "Ejercicio 2":
             st.session_state.precios.append(precio)
             st.session_state.cantidades.append(cantidad)
             st.session_state.totales.append(total)
-           
+
+        # Limpiar widgets y recargar
+        st.session_state.nombre_prod_key = ""
+        st.session_state.categoria_key = "Electrónico"
+        st.session_state.precio_key = 0.0
+        st.session_state.cantidad_key = 1
+        st.rerun()
+        
         else:
             st.error("Ingresa el nombre.")
 
