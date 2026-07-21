@@ -120,11 +120,16 @@ elif modulo == "Ejercicio 1":
 elif modulo == "Ejercicio 2":
     st.subheader("Ejercicio 2")
     st.info("Por cada actividad a registrar, ingrese los siguientes datos:") 
-    actividad = st.text_input("Nombre o descripción:")
-    tipo = st.text_input("Tipo:")
-    presupuesto = st.number_input("Presupuesto:")
-    gasto = st.number_input("Gasto:")
-    
+
+    nombre_prod = st.text_input("Nombre del producto:", key="nombre_prod_key")
+    categoria = st.selectbox("Categoria:", ["Electrónicos", "Ropa", "Hogar", "Deportes"], key="categoria_key")
+    precio = st.number_input("Precio:", min_value=0.0, format="%.2f", key="precio_key")
+    cantidad = st.number_input("Cantidad:", value=1, key="cantidad_key")
+    total = precio * cantidad
+
+    # Mostrar total como campo de solo lectura
+    st.number_input("Total", value=total, disabled=True, format="%.2f")
+      
 
     
                     
