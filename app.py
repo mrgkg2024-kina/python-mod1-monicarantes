@@ -129,6 +129,13 @@ elif modulo == "Ejercicio 2":
     st.session_state.setdefault("cantidades", [])
     st.session_state.setdefault("totales", [])
 
+    # Limpiar en el siguiente ciclo antes de dibujar widgets
+    if st.session_state.clear_inputs:
+        st.session_state["nombre_prod_key"] = ""
+        st.session_state["categoria_key"] = "Electrónico"
+        st.session_state["precio_key"] = 0.0
+        st.session_state["cantidad_key"] = 1
+        st.session_state.clear_inputs = False
     
     nombre_prod = st.text_input("Nombre del producto:", key="nombre_prod_key")
     categoria = st.selectbox("Categoria:", ["Electrónico", "Ropa", "Hogar", "Deportes"], key="categoria_key")
@@ -148,11 +155,7 @@ elif modulo == "Ejercicio 2":
             st.session_state.cantidades.append(cantidad)
             st.session_state.totales.append(total)
 
-            # Limpiar widgets y recargar
-            st.session_state.nombre_prod_key = ""
-            st.session_state.categoria_key = "Electrónico"
-            st.session_state.precio_key = 0.0
-            st.session_state.cantidad_key = 1
+            st.session_state.clear_inputs = True
             st.rerun()
      
         else:
