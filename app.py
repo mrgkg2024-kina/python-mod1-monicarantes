@@ -148,12 +148,12 @@ elif modulo == "Ejercicio 2":
             st.session_state.cantidades.append(cantidad)
             st.session_state.totales.append(total)
 
-        # Limpiar widgets y recargar
-        st.session_state.nombre_prod_key = ""
-        st.session_state.categoria_key = "Electrónico"
-        st.session_state.precio_key = 0.0
-        st.session_state.cantidad_key = 1
-        st.rerun()
+            # Limpiar widgets y recargar
+            st.session_state.nombre_prod_key = ""
+            st.session_state.categoria_key = "Electrónico"
+            st.session_state.precio_key = 0.0
+            st.session_state.cantidad_key = 1
+            st.rerun()
         
         else:
             st.error("Ingresa el nombre.")
