@@ -122,6 +122,16 @@ elif modulo == "Ejercicio 2":
     st.subheader("Ejercicio 2")
     st.info("Por cada registro de producto, ingrese los siguientes datos:") 
 
+    # Si toca limpiar, hacerlo ANTES de crear los widgets
+    if ss.reset_inputs:
+        ss["nombre_prod_key"] = ""
+        ss["categoria_key"] = "Ingreso"
+        ss["precio_key"] = 0.0
+        ss["cantidad_key"] = 1
+        ss.reset_inputs = False  # desactivar flag
+
+
+    
     # Arrays en session_state
     st.session_state.setdefault("nombres", [])
     st.session_state.setdefault("categorias", [])
@@ -146,6 +156,8 @@ elif modulo == "Ejercicio 2":
             st.session_state.precios.append(precio)
             st.session_state.cantidades.append(cantidad)
             st.session_state.totales.append(total)
+            ss.reset_inputs = True
+            st.rerun()
         else:
             st.error("Ingresa el nombre.")
 
