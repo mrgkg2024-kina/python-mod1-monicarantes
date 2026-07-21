@@ -140,7 +140,7 @@ elif modulo == "Ejercicio 2":
 
    # Agregar
     if st.button("Agregar"):
-        if nombre.strip():
+        if nombre_prod.strip():
             st.session_state.nombres.append(nombre_prod.strip())
             st.session_state.categorias.append(categoria)
             st.session_state.precios.append(precio)
