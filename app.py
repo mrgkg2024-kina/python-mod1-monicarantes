@@ -128,6 +128,7 @@ elif modulo == "Ejercicio 2":
     st.session_state.setdefault("precios", [])
     st.session_state.setdefault("cantidades", [])
     st.session_state.setdefault("totales", [])
+    st.session_state.setdefault("clear_inputs", False)
 
     # Limpiar en el siguiente ciclo antes de dibujar widgets
     if st.session_state.clear_inputs:
