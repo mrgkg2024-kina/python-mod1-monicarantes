@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import numpy as np
 from textwrap import dedent
 
 st.set_page_config(page_title="Fundamentos de Programación - Python y Streamlit", layout="centered")
@@ -121,6 +122,13 @@ elif modulo == "Ejercicio 2":
     st.subheader("Ejercicio 2")
     st.info("Por cada registro de producto, ingrese los siguientes datos:") 
 
+    # Arrays en session_state
+    st.session_state.setdefault("nombres", [])
+    st.session_state.setdefault("categorias", [])
+    st.session_state.setdefault("precios", [])
+    st.session_state.setdefault("cantidades", [])
+    st.session_state.setdefault("totales", [])
+    
     nombre_prod = st.text_input("Nombre del producto:", key="nombre_prod_key")
     categoria = st.selectbox("Categoria:", ["Electrónicos", "Ropa", "Hogar", "Deportes"], key="categoria_key")
     precio = st.number_input("Precio:", min_value=0.0, format="%.2f", key="precio_key")
@@ -129,7 +137,27 @@ elif modulo == "Ejercicio 2":
 
     # Mostrar total como campo de solo lectura
     st.number_input("Total", value=total, disabled=True, format="%.2f")
-      
+
+   # Agregar
+    if st.button("Agregar"):
+        if nombre.strip():
+            st.session_state.nombres.append(nombre_prod.strip())
+            st.session_state.categorias.append(categoria)
+            st.session_state.precios.append(precio)
+            st.session_state.cantidades.append(cantidad)
+            st.session_state.totales.append(total)
+        else:
+            st.error("Ingresa el nombre.")
+
+    # DataFrame
+    df = pd.DataFrame({
+        "Nombre_producto": st.session_state.nombres,
+        "Categoría": st.session_state.categorias,
+        "Precio": st.session_state.precios,
+        "Cantidad": st.session_state.cantidades,
+        "Total": st.session_state.totales
+    })
+    st.dataframe(df, use_container_width=True, hide_index=True)
 
     
                     
