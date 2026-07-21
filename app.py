@@ -119,7 +119,7 @@ elif modulo == "Ejercicio 1":
     
 elif modulo == "Ejercicio 2":
     st.subheader("Ejercicio 2")
-    st.info("Por cada actividad a registrar, ingrese los siguientes datos:") 
+    st.info("Por cada registro de producto, ingrese los siguientes datos:") 
 
     nombre_prod = st.text_input("Nombre del producto:", key="nombre_prod_key")
     categoria = st.selectbox("Categoria:", ["Electrónicos", "Ropa", "Hogar", "Deportes"], key="categoria_key")
