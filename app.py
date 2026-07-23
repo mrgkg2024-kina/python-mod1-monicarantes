@@ -204,7 +204,8 @@ elif modulo == "Ejercicio 3":
             st.session_state.tiempos_th.append(th)
             st.session_state.tiempos_ch.append(ch)
             st.session_state.dispos.append(dispo)
-            st.metric("Disponibilidad (%)", f"{dispo:.4f}")
+            st.write(res)
+            #st.metric("Disponibilidad (%)", f"{dispo:.4f}")
 
     if st.session_state.tiempos_th:
         df = pd.DataFrame({
