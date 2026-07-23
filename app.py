@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import libreria_funciones_proyecto1 as lf
 from textwrap import dedent
 
 st.set_page_config(page_title="Fundamentos de Programación - Python y Streamlit", layout="centered")
@@ -117,7 +118,11 @@ elif modulo == "Ejercicio 1":
         ss.lista_mov = []
         ss.reset_inputs = True
         st.rerun()
-    
+
+# *********************************************
+# EJERCICIO 2
+# *********************************************
+
 elif modulo == "Ejercicio 2":
     st.subheader("Ejercicio 2")
     st.info("Por cada registro de producto, ingrese los siguientes datos:") 
@@ -171,6 +176,15 @@ elif modulo == "Ejercicio 2":
         "Total": st.session_state.totales
     })
     st.dataframe(df, use_container_width=True, hide_index=True)
+
+# *********************************************
+# EJERCICIO 3
+# *********************************************
+
+elif modulo == "Ejercicio 3":
+    tiempo_th = st.number_input("Tiempo total en horas:", min_value=0.0, format="%.2f", key="tiempo_th__key")
+    tiempo_ch = st.number_input("Tiempo caída en horas:", min_value=0.0, format="%.2f", key="tiempo_ch__key")    
+
 
     
                     
