@@ -190,8 +190,15 @@ elif modulo == "Ejercicio 3":
     st.session_state.setdefault("tiempos_ch", [])
     st.session_state.setdefault("dispos", [])
 
-    th = st.number_input("Tiempo total (h)", min_value=0.0, format="%.2f")
-    ch = st.number_input("Tiempo caída (h)", min_value=0.0, format="%.2f")
+    # Limpiar en el siguiente ciclo antes de dibujar widgets
+    if st.session_state.clear_inputs:
+        st.session_state["th_key"] = 0.0
+        st.session_state["ch_key"] = 0.0
+        st.session_state.clear_inputs = False
+    
+
+    th = st.number_input("Tiempo total (h)", min_value=0.0, format="%.2f", key="th_key")
+    ch = st.number_input("Tiempo caída (h)", min_value=0.0, format="%.2f",key="ch_key")
 
     if st.button("Calcular y guardar"):
         if th <= 0:
@@ -205,7 +212,8 @@ elif modulo == "Ejercicio 3":
             st.session_state.tiempos_ch.append(ch)
             st.session_state.dispos.append(dispo)
             st.write(res)
-            #st.metric("Disponibilidad (%)", f"{dispo:.4f}")
+            st.session_state.clear_inputs = True
+            st.rerun()
 
     if st.session_state.tiempos_th:
         df = pd.DataFrame({
