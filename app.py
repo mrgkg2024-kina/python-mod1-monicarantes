@@ -189,23 +189,21 @@ elif modulo == "Ejercicio 3":
     tiempo_ch = st.number_input("Tiempo caída en horas:", min_value=0.0, format="%.2f")
 
     dispo_pct = None
-    colA, colB = st.columns(2)
+        
+   
+    if st.button("Calcular disponibilidad"):
+        if tiempo_th <= 0:
+            st.error("El tiempo total debe ser mayor que 0.")
+        elif tiempo_ch > tiempo_th:
+            st.error("El tiempo de caída no puede superar el tiempo total.")
+        else:
+            dispo_pct = lfp.calcular_disponibilidad_sistema(tiempo_th, tiempo_ch)
+            st.success("Cálculo realizado.")
+            st.write(dispo_pct)
 
-    with colA:
-        if st.button("Calcular disponibilidad"):
-            if tiempo_th <= 0:
-                st.error("El tiempo total debe ser mayor que 0.")
-            elif tiempo_ch > tiempo_th:
-                st.error("El tiempo de caída no puede superar el tiempo total.")
-            else:
-                dispo_pct = lfp.calcular_disponibilidad_sistema(tiempo_th, tiempo_ch)
-                st.success("Cálculo realizado.")
-                st.write(dispo_pct)
-
-    with colB:
-        if dispo_pct is not None:
-            if isinstance(dispo_pct, dict):
-                df = pd.DataFrame([dispo_pct])
-            else:
-                df = pd.DataFrame({"Tiempo total horas": tiempo_th,"Tiempo caida horas":tiempo_ch ,"Disponibilidad (%)": [dispo_pct]})
+    if dispo_pct is not None:
+        if isinstance(dispo_pct, dict):
+            df = pd.DataFrame([dispo_pct])
+        else:
+            df = pd.DataFrame({"Tiempo total horas": tiempo_th,"Tiempo caida horas":tiempo_ch ,"Disponibilidad (%)": [dispo_pct]})
             st.dataframe(df, use_container_width=True, hide_index=True)
