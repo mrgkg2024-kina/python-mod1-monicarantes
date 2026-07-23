@@ -201,5 +201,5 @@ elif modulo == "Ejercicio 3":
             st.success("Cálculo realizado.")
             st.write(dispo_pct)
 
-       df = pd.DataFrame({"Tiempo total horas": tiempo_th,"Tiempo caida horas":tiempo_ch ,"Disponibilidad (%)": dispo_pct.values()})
-       st.dataframe(df, use_container_width=True, hide_index=True)
+        df = pd.DataFrame({"Tiempo total horas": tiempo_th,"Tiempo caida horas":tiempo_ch ,"Disponibilidad (%)": dispo_pct.values()})
+        st.dataframe(df, use_container_width=True, hide_index=True)
