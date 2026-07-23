@@ -184,11 +184,15 @@ elif modulo == "Ejercicio 2":
 elif modulo == "Ejercicio 3":
     tiempo_th = st.number_input("Tiempo total en horas:", min_value=0.0, format="%.2f", key="tiempo_th__key")
     tiempo_ch = st.number_input("Tiempo caída en horas:", min_value=0.0, format="%.2f", key="tiempo_ch__key")    
-     
-    if st.button("Calcular disponibilidad"):
+
+    colA, colB = st.columns(2)
+    
+    with colA:
+        if st.button("Calcular disponibilidad"):
         dispo_pct = {}
         dispo_pct = lfp.calcular_disponibilidad_sistema(tiempo_th, tiempo_ch)
         st.write(dispo_pct)
-
-    
+    with colB:
+        df = pd.DataFrame(dispo_pct)
+         st.dataframe(df, use_container_width=True, hide_index=True)
                     
