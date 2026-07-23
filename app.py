@@ -189,10 +189,10 @@ elif modulo == "Ejercicio 3":
     
     with colA:
         if st.button("Calcular disponibilidad"):
-        dispo_pct = {}
-        dispo_pct = lfp.calcular_disponibilidad_sistema(tiempo_th, tiempo_ch)
-        st.write(dispo_pct)
+            dispo_pct = {}
+            dispo_pct = lfp.calcular_disponibilidad_sistema(tiempo_th, tiempo_ch)
+            st.write(dispo_pct)
     with colB:
         df = pd.DataFrame(dispo_pct)
-         st.dataframe(df, use_container_width=True, hide_index=True)
+        st.dataframe(df, use_container_width=True, hide_index=True)
                     
