@@ -185,6 +185,7 @@ elif modulo == "Ejercicio 3":
     st.subheader("Ejercicio 3")
     st.info("Calcular disponibilidad del sistema")
 
+    res ={}
     st.session_state.setdefault("tiempos_th", [])
     st.session_state.setdefault("tiempos_ch", [])
     st.session_state.setdefault("dispos", [])
@@ -199,7 +200,7 @@ elif modulo == "Ejercicio 3":
             st.error("La caída no puede superar el total.")
         else:
             res = lfp.calcular_disponibilidad_sistema(th, ch)  # siempre dict
-            dispo = float(res["disponibilidad"])  # ajusta la clave si es otra
+            dispo = res.values()  # ajusta la clave si es otra
             st.session_state.tiempos_th.append(th)
             st.session_state.tiempos_ch.append(ch)
             st.session_state.dispos.append(dispo)
