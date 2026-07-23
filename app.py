@@ -185,21 +185,30 @@ elif modulo == "Ejercicio 3":
     st.subheader("Ejercicio 3")
     st.info("Calcular disponibilidad del sistema")
 
-    tiempo_th = st.number_input("Tiempo total en horas:", min_value=0.0, format="%.2f")
-    tiempo_ch = st.number_input("Tiempo caída en horas:", min_value=0.0, format="%.2f")
+    st.session_state.setdefault("tiempos_th", [])
+    st.session_state.setdefault("tiempos_ch", [])
+    st.session_state.setdefault("dispos", [])
 
-    dispo_pct = None
-        
-   
-    if st.button("Calcular disponibilidad"):
-        if tiempo_th <= 0:
-            st.error("El tiempo total debe ser mayor que 0.")
-        elif tiempo_ch > tiempo_th:
-            st.error("El tiempo de caída no puede superar el tiempo total.")
+    th = st.number_input("Tiempo total (h)", min_value=0.0, format="%.2f")
+    ch = st.number_input("Tiempo caída (h)", min_value=0.0, format="%.2f")
+
+    if st.button("Calcular y guardar"):
+        if th <= 0:
+            st.error("Tiempo total debe ser > 0.")
+        elif ch > th:
+            st.error("La caída no puede superar el total.")
         else:
-            dispo_pct = lfp.calcular_disponibilidad_sistema(tiempo_th, tiempo_ch)
-            st.success("Cálculo realizado.")
-            st.write(dispo_pct)
+            res = lfp.calcular_disponibilidad_sistema(th, ch)  # siempre dict
+            dispo = float(res["disponibilidad"])  # ajusta la clave si es otra
+            st.session_state.tiempos_th.append(th)
+            st.session_state.tiempos_ch.append(ch)
+            st.session_state.dispos.append(dispo)
+            st.metric("Disponibilidad (%)", f"{dispo:.4f}")
 
-        df = pd.DataFrame({"Tiempo total horas": tiempo_th,"Tiempo caida horas":tiempo_ch ,"Disponibilidad (%)": dispo_pct.values()})
+    if st.session_state.tiempos_th:
+        df = pd.DataFrame({
+            "Tiempo total (h)": st.session_state.tiempos_th,
+            "Tiempo caída (h)": st.session_state.tiempos_ch,
+            "Disponibilidad (%)": st.session_state.dispos
+        })
         st.dataframe(df, use_container_width=True, hide_index=True)
