@@ -207,5 +207,5 @@ elif modulo == "Ejercicio 3":
             if isinstance(dispo_pct, dict):
                 df = pd.DataFrame([dispo_pct])
             else:
-                df = pd.DataFrame({"Disponibilidad (%)": [dispo_pct]})
+                df = pd.DataFrame({"Tiempo total horas": tiempo_th,"Tiempo caida horas":tiempo_ch ,"Disponibilidad (%)": [dispo_pct]})
             st.dataframe(df, use_container_width=True, hide_index=True)
