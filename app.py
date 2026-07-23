@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import libreria_funciones_proyecto1 as lf
+import libreria_funciones_proyecto1 as lfp
 from textwrap import dedent
 
 st.set_page_config(page_title="Fundamentos de Programación - Python y Streamlit", layout="centered")
@@ -184,7 +184,9 @@ elif modulo == "Ejercicio 2":
 elif modulo == "Ejercicio 3":
     tiempo_th = st.number_input("Tiempo total en horas:", min_value=0.0, format="%.2f", key="tiempo_th__key")
     tiempo_ch = st.number_input("Tiempo caída en horas:", min_value=0.0, format="%.2f", key="tiempo_ch__key")    
-
+    dispo_pct = {}
+    dispo_pct = lfp.calcular_disponibilidad_sistema(tiempo_th, tiempo_ch)
+    
 
     
                     
