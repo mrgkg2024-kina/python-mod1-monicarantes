@@ -189,6 +189,7 @@ elif modulo == "Ejercicio 3":
     st.session_state.setdefault("tiempos_th", [])
     st.session_state.setdefault("tiempos_ch", [])
     st.session_state.setdefault("dispos", [])
+    st.session_state.setdefault("clear_inputs", False)
 
     # Limpiar en el siguiente ciclo antes de dibujar widgets
     if st.session_state.clear_inputs:
