@@ -110,9 +110,9 @@ elif modulo == "Ejercicio 1":
             suma_gastos = df.loc[df["Tipo"] == "Gasto", "Valor"].sum()
             saldo_final = suma_ingresos - suma_gastos
 
-            st.write("Total de ingresos = ", suma_ingresos )
-            st.write("Total de gastos = ", suma_gastos )  
-            st.write("Saldo final = ", saldo_final)
+            st.write(f"Total de ingresos = {suma_ingresos:.2f}")
+            st.write(f"Total de gastos = {suma_gastos:.2f}" )  
+            st.write(f"Saldo final = {saldo_final:.2f}")
             
             if saldo_final >= 0.0:
                 st.success ("Flujo de caja a favor")    
