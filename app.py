@@ -283,9 +283,9 @@ elif modulo == "Ejercicio 4":
                 st.error("Ingresa nombre del servidor")
 
     def cargar_ultimo():
-    if not st.session_state.servidores:
-        st.session_state["msg_error"] = "No hay registros para leer."
-        return
+        if not st.session_state.servidores:
+            st.session_state["msg_error"] = "No hay registros para leer."
+            return
     i = -1
     st.session_state["nombre_serv_key"] = st.session_state.servidores[i]
     st.session_state["tth_key"] = float(st.session_state.tiempo_total[i])
