@@ -335,7 +335,7 @@ elif modulo == "Ejercicio 4":
             "Tiempo total (h)": st.session_state.tiempo_total,
             "Tiempo caída (h)": st.session_state.tiempo_caida,
             "Alm. total (GB)": st.session_state.almacenamiento_total,
-            "Alm. usado (GB)": st.session_state.almacenamiento_usado
+            "Alm. usado (GB)": st.session_state.almacenamiento_usado,
             "Disponibilidad": st.session_state.dispo_pct
         })
         st.dataframe(df, use_container_width=True, hide_index=True)         
