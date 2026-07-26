@@ -258,12 +258,12 @@ elif modulo == "Ejercicio 4":
     almacenamiento_ugb = st.selectbox("Almacenamiento usado (GB)", [250,300,350,400,450], key="almacenamiento_ugb__key")
 
     if st.button("Calcular y guardar"):
-        if tiempo_th <= 0:
+        if tiempo_th <= 0.0:
            st.error("Tiempo total debe ser > 0.")
         elif tiempo_ch > tiempo_th:
             st.error("La caída no puede superar el total.")
         elif almacenamiento_ugb > almacenamiento_tgb:
-            st.error("El almacenamiento usado no puede superar el alamcenamiento total.")
+            st.error("El almacenamiento usado no puede superar el almacenamiento total.")
         else:
             if nombre_serv.strip():
                 servidor_nvo = lcp.Servidor(nombre_serv,tiempo_th,tiempo_ch,almacenamiento_tgb,almacenamiento_ugb)
@@ -279,12 +279,12 @@ elif modulo == "Ejercicio 4":
             else:
                 st.error("Ingresa nombre del servidor")
 
-        if session_state.servidores:
-            df = pd.DataFrame({
+    if st.session_state.servidores:
+        df = pd.DataFrame({
             "Tiempo total (h)": st.session_state.tiempo_total,
-            "Tiempo caída (h)":  st.session_state.tiempo_caida,
-            })
-            st.dataframe(df, use_container_width=True, hide_index=True)
+            "Tiempo caída (h)":  st.session_state.tiempo_caida
+        })
+        st.dataframe(df, use_container_width=True, hide_index=True)
             
          
          
