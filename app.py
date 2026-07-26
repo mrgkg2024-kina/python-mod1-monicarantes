@@ -62,49 +62,48 @@ if modulo == "Home":
 elif modulo == "Ejercicio 1":
     st.subheader("Ejercicio 1")
        
-    ss = st.session_state
-    ss.setdefault("lista_mov", [])
-    ss.setdefault("reset_inputs", False)
-    ss.setdefault("flash_msg", None)
+    st.session_state.setdefault("lista_mov", [])
+    st.session_state.setdefault("reset_inputs", False)
+    st.session_state.setdefault("flash_msg", None)
 
-    if ss.flash_msg:
+    if st.session_state.flash_msg:
         st.success(ss.flash_msg)
-        ss.flash_msg = None
+        st.session_state.flash_msg = None
     
     # Si toca limpiar, hacerlo ANTES de crear los widgets
-    if ss.reset_inputs:
-        ss["concepto_key"] = ""
-        ss["tipo_key"] = "Ingreso"
-        ss["valor_key"] = 0.0
-        ss.reset_inputs = False  # desactivar flag
+    if st.session_state.reset_inputs:
+        st.session_state["concepto_key"] = ""
+        st.session_state["tipo_key"] = "Ingreso"
+        st.session_state["valor_key"] = 0.0
+        st.session_states.reset_inputs = False  # desactivar flag
        
     
     # Campos de entrada usando session state
     concepto_mov = st.text_input("Concepto:", key="concepto_key")
     tipo_mov = st.selectbox("Tipo:", ["Ingreso", "Gasto"], key="tipo_key")
-    valor_mov = st.number_input("Valor:", value=0.0, key="valor_key")
+    valor_mov = st.number_input("Valor:", min_value=0.0, format="%.2f", key="valor_key")
 
     col1, col2, col3 = st.columns(3)
     with col1:
         if st.button("Registrar movimiento"):
             if concepto_mov and valor_mov != 0:
-                movimiento = [concepto_mov, tipo_mov, valor_mov]
-                ss.lista_mov.append([concepto_mov, tipo_mov, float(valor_mov)])
-                ss.reset_inputs = True   # marcar para limpiar
-                ss.flash_msg = "Movimiento registrado"   # <- mensaje
+                #movimiento = [concepto_mov, tipo_mov, valor_mov]
+                st.session_state.lista_mov.append([concepto_mov, tipo_mov, valor_mov])
+                st.session_state.reset_inputs = True   # marcar para limpiar
+                st.session_state.flash_msg = "Movimiento registrado"   # <- mensaje
                 st.rerun()
         else:
             st.error("Completar datos para el registro")
     with col2:  
         if st.button("🗑️ Limpiar"):
-            ss.lista_mov = []
-            ss.reset_inputs = True
+            st.session_state.lista_mov = []
+            st.session_state.reset_inputs = True
             st.rerun()
 
                    
     if st.button("Mostrar movimientos"):
-        if ss.lista_mov:
-            df = pd.DataFrame(ss.lista_mov, columns=["Concepto", "Tipo", "Valor"])
+        if st.session_state.lista_mov:
+            df = pd.DataFrame(st.session_state.lista_mov, columns=["Concepto", "Tipo", "Valor"])
             st.dataframe(df, use_container_width=True)
                      
             suma_ingresos = df.loc[df["Tipo"] == "Ingreso", "Valor"].sum()
