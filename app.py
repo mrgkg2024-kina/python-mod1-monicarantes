@@ -233,6 +233,7 @@ elif modulo == "Ejercicio 4":
     st.subheader("Ejercicio 4")
     st.info("Calcular disponibilidad del servidor")
 
+    resumen={}
     st.session_state.setdefault("servidores", [])
     st.session_state.setdefault("tiempo_total", [])
     st.session_state.setdefault("tiempo_caida", [])
@@ -266,12 +267,13 @@ elif modulo == "Ejercicio 4":
         else:
             if nombre_serv.strip():
                 servidor_nvo = lcp.Servidor(nombre_serv,tiempo_th,tiempo_ch,almacenamiento_tgb,almacenamiento_ugb)
-                st.write(servidor_nvo.resumen())
+                resumen = servidor_nvo.resumen()
                 st.session_state.servidores.append(nombre_serv.strip())
                 st.session_state.tiempo_total.append(tiempo_th)
                 st.session_state.tiempo_caida.append(tiempo_ch)
                 st.session_state.almacenanmiento_total.append(almacenamiento_tgb)
                 st.session_state.almacenanmiento_usado.append(almacenamiento_ugb)
+                st.write(resumen)
                 st.session_state.clear_inputs = True
                 st.rerun()
             else:
