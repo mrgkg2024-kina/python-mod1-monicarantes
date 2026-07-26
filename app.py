@@ -282,12 +282,19 @@ elif modulo == "Ejercicio 4":
     if st.session_state.servidores:
         st.write(st.session_state.get("ultimo_resumen"))
         df = pd.DataFrame({
+            "Nombre_servidor":session_state.servidores,
             "Tiempo total (h)": st.session_state.tiempo_total,
-            "Tiempo caída (h)":  st.session_state.tiempo_caida
+            "Tiempo caída (h)":  st.session_state.tiempo_caida,
+            "Alm. total (GB)": session_state.almacenamiento_total,
+            "Alm. usado (GB)": session_state.almacenamiento_usado,
         })
         st.dataframe(df, use_container_width=True, hide_index=True)
             
-         
+   if st.button("🗑️ Limpiar todo"):
+       session_state.servidores,ession_state.tiempo_total,st.session_state.tiempo_caida,st.session_state.almacenamiento_total,
+       st.session_state.almacenamiento_usado =[]
+       ss.reset_inputs = True
+       st.rerun()      
          
 
 
