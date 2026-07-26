@@ -100,26 +100,26 @@ elif modulo == "Ejercicio 1":
             ss.reset_inputs = True
             st.rerun()
 
-    with col3:                 
-        if st.button("Mostrar movimientos"):
-            if ss.lista_mov:
-                #st.dataframe(
-                #    pd.DataFrame(ss.lista_mov, columns=["Concepto", "Tipo", "Valor"]),
-                #    use_container_width=True)
-
-                df = pd.DataFrame(ss.lista_mov, columns=["Concepto", "Tipo", "Valor"])
-                st.dataframe(df, use_container_width=True)
+                   
+    if st.button("Mostrar movimientos"):
+        if ss.lista_mov:
+            df = pd.DataFrame(ss.lista_mov, columns=["Concepto", "Tipo", "Valor"])
+            st.dataframe(df, use_container_width=True)
                      
-                suma_ingresos = df.loc[df["Tipo"] == "Ingreso", "Valor"].sum()
-                suma_gastos = df.loc[df["Tipo"] == "Gasto", "Valor"].sum()
-                saldo_final = suma_ingresos - suma_gastos
+            suma_ingresos = df.loc[df["Tipo"] == "Ingreso", "Valor"].sum()
+            suma_gastos = df.loc[df["Tipo"] == "Gasto", "Valor"].sum()
+            saldo_final = suma_ingresos - suma_gastos
 
-                st.write("Total de ingresos = ", suma_ingresos )
-                st.write("Total de gastos = ", suma_gastos )  
-                st.write("Saldo final = ", saldo_final)
-                
+            st.write("Total de ingresos = ", suma_ingresos )
+            st.write("Total de gastos = ", suma_gastos )  
+            st.write("Saldo final = ", saldo_final)
+            
+            if saldo_final >= 0
+                st.success ("Flujo de caja a favor")    
             else:
-                st.info("No hay movimientos")
+                st.success ("Flujo de caja en contra")
+        else:
+            st.info("No hay movimientos")
 
 
 
