@@ -332,14 +332,12 @@ elif modulo == "Ejercicio 4":
                     st.session_state["ultimo_resumen"] = srv.resumen()
                     st.session_state.dispo_pct[i]=st.session_state["ultimo_resumen"]["disponibilidad_pct"]
                     st.session_state.clear_inputs = True
-                    st.rerun() 
-                    
                      
                  except Exception as e:
                     st.warning(f"No se pudo recalcular el resumen: {e}")
                     
                  # Activa flag y recarga
-                 st.session_state.clear_inputs = True    
+                 st.session_state.ok_actualizado = True  
                  st.rerun()
             else:
                 st.error("Ingresa nombre del servidor")
