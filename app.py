@@ -246,16 +246,16 @@ elif modulo == "Ejercicio 4":
         st.session_state["nombre_serv_key"] = ""
         st.session_state["tth_key"] = 0.0
         st.session_state["tch_key"] = 0.0
-        st.session_state["almacenamiento_tgb__key"] = 300
-        st.session_state["almacenamiento_ugb__key"] = 250
+        st.session_state["almacenamiento_tgb_key"] = 300
+        st.session_state["almacenamiento_ugb_key"] = 250
         st.session_state.clear_inputs = False
  
 
     nombre_serv = st.text_input("Nombre del servidor:", key="nombre_serv_key")
     tiempo_th = st.number_input("Tiempo total (h)", min_value=0.0, format="%.2f", key="tth_key")
     tiempo_ch = st.number_input("Tiempo caída (h)", min_value=0.0, format="%.2f",key="tch_key")
-    almacenamiento_tgb = st.selectbox("Almacenamiento total (GB)", [300,350,400,450,500], key="almacenamiento_tgb__key")
-    almacenamiento_ugb = st.selectbox("Almacenamiento usado (GB)", [250,300,350,400,450], key="almacenamiento_ugb__key")
+    almacenamiento_tgb = st.selectbox("Almacenamiento total (GB)", [300,350,400,450,500], key="almacenamiento_tgb_key")
+    almacenamiento_ugb = st.selectbox("Almacenamiento usado (GB)", [250,300,350,400,450], key="almacenamiento_ugb_key")
 
     if st.button("Calcular y guardar"):
         if tiempo_th <= 0.0:
@@ -279,12 +279,39 @@ elif modulo == "Ejercicio 4":
             else:
                 st.error("Ingresa nombre del servidor")
 
-    if st.button("Actualizar registro"):
-        st.info("Considerando el úlimo servidor ingresado:")
-        dato_update = st.selectbox("Seleccione el dato que actualizará:", ["Nombre del servidor","Tiempo total (h)",
-                                                                           "Tiempo caída (h)","Almacenamiento total (GB)",
-                                                                           "Almacenamiento usado (GB)"], key="dato_update__key")
-    
+    if st.button("Actualizar último registro"):
+        if not st.session_state.servidores:
+            st.error("No hay registros para actualizar.")
+        elif tiempo_th <= 0.0:
+            st.error("Tiempo total debe ser > 0.0")
+        elif tiempo_ch > tiempo_th:
+            st.error("La caída no puede superar el total.")
+        elif almacenamiento_ugb > almacenamiento_tgb:
+            st.error("El almacenamiento usado no puede superar el almacenamiento total.")
+        else:
+             if nombre_serv.strip():
+                 i = len(st.session_state.servidores) - 1
+                 st.session_state.servidores[i] = nombre_serv or st.session_state.servidores[i]
+                 st.session_state.tiempo_total[i] = tiempo_th or st.session_state.tiempo_total[i]
+                 st.session_state.tiempo_caida[i] = tiempo_ch or st.session_state.tiempo_caida[i]
+                 st.session_state.almacenamiento_total[i] = almacenamiento_tgb or st.session_state.almacenamiento_total[i]
+                 st.session_state.almacenamiento_usado[i] = almacenamiento_ugb or st.session_state.almacenamiento_usado[i]
+                 try:
+                    srv = lcp.Servidor(
+                    st.session_state.servidores[i],
+                    st.session_state.tiempo_total[i],
+                    st.session_state.tiempo_caida[i],
+                    st.session_state.almacenamiento_total[i],
+                    st.session_state.almacenamiento_usado[i],
+                    )
+                    st.session_state["ultimo_resumen"] = srv.resumen()
+                except Exception as e:
+                    st.warning(f"No se pudo recalcular el resumen: {e}")
+                    
+                st.session_state.clear_inputs = True    
+                st.rerun()
+            else:
+                st.error("Ingresa nombre del servidor")
     
     if st.button("🗑️ Limpiar todo"):
         st.session_state.servidores = []
