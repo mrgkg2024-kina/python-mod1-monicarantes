@@ -259,7 +259,7 @@ elif modulo == "Ejercicio 4":
 
     if st.button("Calcular y guardar"):
         if tiempo_th <= 0.0:
-           st.error("Tiempo total debe ser > 0.")
+           st.error("Tiempo total debe ser > 0.0")
         elif tiempo_ch > tiempo_th:
             st.error("La caída no puede superar el total.")
         elif almacenamiento_ugb > almacenamiento_tgb:
@@ -279,7 +279,14 @@ elif modulo == "Ejercicio 4":
             else:
                 st.error("Ingresa nombre del servidor")
 
-    if st.button("🗑️ Limpiar"):
+    if st.button("Actualizar registro"):
+        st.info("Considerando el úlimo servidor ingresado:")
+        dato_update = st.selectbox("Seleccione el dato que actualizará:", ["Nombre del servidor","Tiempo total (h)",
+                                                                           "Tiempo caída (h)","Almacenamiento total (GB)",
+                                                                           "Almacenamiento usado (GB)"], key="dato_update__key")
+    
+    
+    if st.button("🗑️ Limpiar todo"):
         st.session_state.servidores = []
         st.session_state.tiempo_total = []
         st.session_state.tiempo_caida = []
