@@ -60,7 +60,9 @@ if modulo == "Home":
 # *********************************************
 
 elif modulo == "Ejercicio 1":
-    st.subheader("Ejercicio 1")
+    st.subheader("Ejercicio 1 – Flujo de caja con listas ")
+    st.markdown("En este ejercicio se registrarán movimientos financieros en una lista vacía. Por cada movimiento se registrará:concepto, 
+                tipo y valor.Al final del ejercicio se mostrará si el flujo de caja es a favor o en contra.")  
        
     st.session_state.setdefault("lista_mov", [])
     st.session_state.setdefault("reset_inputs", False)
