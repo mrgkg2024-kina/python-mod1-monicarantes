@@ -328,7 +328,7 @@ elif modulo == "Ejercicio 4":
                     st.session_state["ultimo_resumen"] = srv.resumen()
                     st.session_state.dispo_pct[i]=st.session_state["ultimo_resumen"]["disponibilidad_pct"]
                     st.session_state.clear_inputs = True
-                    st.rerun() 
+                    #st.rerun() 
                     
                      
                  except Exception as e:
