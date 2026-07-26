@@ -284,9 +284,9 @@ elif modulo == "Ejercicio 4":
         df = pd.DataFrame({
             "Nombre_servidor": st.session_state.servidores,
             "Tiempo total (h)": st.session_state.tiempo_total,
-            "Tiempo caída (h)":  st.session_state.tiempo_caida,
-            "Alm. total (GB)": session_state.almacenamiento_total,
-            "Alm. usado (GB)": session_state.almacenamiento_usado,
+            "Tiempo caída (h)": st.session_state.tiempo_caida,
+            "Alm. total (GB)": st.session_state.almacenamiento_total,
+            "Alm. usado (GB)": st.session_state.almacenamiento_usado,
         })
         st.dataframe(df, use_container_width=True, hide_index=True)         
     
