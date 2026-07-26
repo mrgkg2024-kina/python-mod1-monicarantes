@@ -229,6 +229,7 @@ elif modulo == "Ejercicio 3":
 # *********************************************
 # EJERCICIO 4
 # *********************************************
+
 elif modulo == "Ejercicio 4":
     st.subheader("Ejercicio 4")
     st.info("Calcular disponibilidad del servidor")
@@ -281,18 +282,21 @@ elif modulo == "Ejercicio 4":
             else:
                 st.error("Ingresa nombre del servidor")
 
-    if st.button("Leer último registro"):
-        if not st.session_state.servidores:
-            st.error("No hay registros para leer.")
-        else:
-            i = -1  # último
-            st.session_state["nombre_serv_key"] = st.session_state.servidores[i]
-            st.session_state["tth_key"] = float(st.session_state.tiempo_total[i])
-            st.session_state["tch_key"] = float(st.session_state.tiempo_caida[i])
-            st.session_state["almacenamiento_tgb_key"] = int(st.session_state.almacenamiento_total[i])
-            st.session_state["almacenamiento_ugb_key"] = int(st.session_state.almacenamiento_usado[i])
-            st.session_state.clear_inputs = False
-            st.rerun()
+    def cargar_ultimo():
+    if not st.session_state.servidores:
+        st.session_state["msg_error"] = "No hay registros para leer."
+        return
+    i = -1
+    st.session_state["nombre_serv_key"] = st.session_state.servidores[i]
+    st.session_state["tth_key"] = float(st.session_state.tiempo_total[i])
+    st.session_state["tch_key"] = float(st.session_state.tiempo_caida[i])
+    st.session_state["almacenamiento_tgb_key"] = int(st.session_state.almacenamiento_total[i])
+    st.session_state["almacenamiento_ugb_key"] = int(st.session_state.almacenamiento_usado[i])
+
+    st.button("Leer último registro", on_click=cargar_ultimo)
+    if st.session_state.get("msg_error"):
+        st.error(st.session_state.pop("msg_error"))
+       
     
     if st.button("Actualizar último registro"):
         if not st.session_state.servidores:
