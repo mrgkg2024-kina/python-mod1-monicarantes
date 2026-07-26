@@ -9,10 +9,15 @@ st.set_page_config(page_title="Fundamentos de Programación - Python y Streamlit
 
 st.title("Fundamentos de Programación utilizando Python y Streamlit")
 st.sidebar.title("Menú")
-st.image("python.png", width=200)
-st.image ("Numpy_logo.jpg", width=200)
-st.image ("Pandas_logo.jpg", width=200)
-# st.image("python.png", use_column_width=True)
+# st.image("python.png", width=200)
+# st.image ("Numpy_logo.jpg", width=200)
+# st.image ("Pandas_logo.jpg", width=200)
+
+col1, col2, col3 = st.columns([1,1,1])
+with col1: st.image("python.png", width=200)
+with col2: st.image("Numpy_logo.jpg", width=200)
+with col3: st.image("Pandas_logo.jpg", width=200)
+
 
 # *********************************************
 # NAVEGACIÓN ENTRE LAS OPCIONES DEL MENU
