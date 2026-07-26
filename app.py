@@ -243,6 +243,7 @@ elif modulo == "Ejercicio 4":
     st.session_state.setdefault("dispo_pct", [])
     st.session_state.setdefault("clear_inputs", False)
     st.session_state.setdefault("ok_actualizado", False)
+    st.session_state.setdefault("ok_eliminado", False)
     
     # Limpiar en el siguiente ciclo antes de dibujar widgets
     if st.session_state.clear_inputs:
@@ -354,8 +355,12 @@ elif modulo == "Ejercicio 4":
             st.session_state.almacenamiento_usado.pop()
             st.session_state.dispo_pct.pop()
             st.session_state.pop("ultimo_resumen", None) 
-            st.success("Último registro eliminado")
+            st.session_state.ok_eliminado = True  
+            st.rerun()
 
+     if st.session_state.ok_eliminado:
+        st.success("Último registro eliminado")
+        st.session_state.ok_eliminado = False
     
     if st.button("🗑️ Limpiar todo"):
         st.session_state.servidores = []
