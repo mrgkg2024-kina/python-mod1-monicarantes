@@ -293,7 +293,7 @@ elif modulo == "Ejercicio 4":
     if st.button("🗑️ Limpiar"):
         st.session_state.servidores,st.session_state.tiempo_total,st.session_state.tiempo_caida,st.session_state.almacenamiento_total,
         st.session_state.almacenamiento_usado =[]
-        ss.reset_inputs = True
+        st.session_state.clear_inputs = True
         st.rerun()      
          
 
