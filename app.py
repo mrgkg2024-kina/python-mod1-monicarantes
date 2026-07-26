@@ -239,6 +239,7 @@ elif modulo == "Ejercicio 4":
     st.session_state.setdefault("tiempo_caida", [])
     st.session_state.setdefault("almacenamiento_total", [])
     st.session_state.setdefault("almacenamiento_usado", [])
+    st.session_state.setdefault("dispo_pct", [])
     st.session_state.setdefault("clear_inputs", False)
     
     # Limpiar en el siguiente ciclo antes de dibujar widgets
