@@ -231,4 +231,70 @@ elif modulo == "Ejercicio 3":
 # *********************************************
 elif modulo == "Ejercicio 4":
     st.subheader("Ejercicio 4")
-    st.info("Calcular disponibilidad del sistema")
+    st.info("Calcular disponibilidad del servidor")
+
+    st.session_state.setdefault("servidores", [])
+    st.session_state.setdefault("tiempo_total", [])
+    st.session_state.setdefault("tiempo_caida", [])
+    st.session_state.setdefault("almacenanmiento_total", [])
+    st.session_state.setdefault("almacenanmiento_usado", [])
+    st.session_state.setdefault("clear_inputs", False)
+    
+    # Limpiar en el siguiente ciclo antes de dibujar widgets
+    if st.session_state.clear_inputs:
+        st.session_state["nombre_serv_key"] = ""
+        st.session_state["tth_key"] = 0.0
+        st.session_state["tch_key"] = 0.0
+        st.session_state["almacenamiento_tgb__key"] = 0.0
+        st.session_state["almacenamiento_ugb__key"] = 0.0
+        st.session_state.clear_inputs = False
+ 
+
+    nombre_serv = st.text_input("Nombre del servidor:", key="nombre_serv_key")
+    tiempo_th = st.number_input("Tiempo total (h)", min_value=0.0, format="%.2f", key="tth_key")
+    tiempo_ch = st.number_input("Tiempo caída (h)", min_value=0.0, format="%.2f",key="tch_key")
+    almacenamiento_tgb = st.selectbox("Almacenamiento total (GB)", [300,350,400,450,500], key="almacenamiento_tgb__key")
+    almacenamiento_ugb = st.selectbox("Almacenamiento usado (GB)", [250,300,350,400,450], key="almacenamiento_ugb__key")
+
+     if st.button("Calcular y guardar"):
+         if tiempo_th <= 0:
+            st.error("Tiempo total debe ser > 0.")
+        elif tiempo_ch > tiempo_th:
+            st.error("La caída no puede superar el total.")
+        elif almacenamiento_ugb > almacenamiento_tgb:
+            st.error("El almacenamiento usado no puede superar el alamcenamiento total.")
+        else:
+            if nombre_serv.strip():
+                st.session_state.servidores.append(nombre_serv.strip())
+                st.session_state.tiempo_total.append(tiempo_th)
+                st.session_state.tiempo_caida.append(tiempo_ch)
+                st.session_state.almacenanmiento_total.append(almacenamiento_tgb)
+                st.session_state.almacenanmiento_usado.append(almacenamiento_ugb)
+                st.session_state.clear_inputs = True
+                st.rerun()
+            else:
+                st.error("Ingresa nombre del servidor")
+
+
+
+
+
+
+
+
+            
+            servidor_aplic = lcp.servidor(nombre_serv,tiempo_th, tiempo_ch,almacenamiento_tgb, almacenamiento_ugb)
+            servidor_aplic.resumen()
+            
+            st.session_state.tiempos_th.append(th)
+            st.session_state.tiempos_ch.append(ch)
+            st.session_state.dispos.append(dispo)
+            st.write(res)
+            st.session_state.clear_inputs = True
+            st.rerun()
+
+         
+         
+
+
+
