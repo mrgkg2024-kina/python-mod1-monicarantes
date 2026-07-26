@@ -63,7 +63,8 @@ elif modulo == "Ejercicio 1":
     st.subheader("Ejercicio 1 – Flujo de caja con listas ")
     st.markdown("""En este ejercicio se registrarán movimientos financieros en una lista vacía. Por cada movimiento se registrará el concepto, 
                 tipo y valor. Al final del ejercicio se mostrará si el flujo de caja es a favor o en contra.""")  
-       
+    st.info("Ingresar los siguientes datos:")
+    
     st.session_state.setdefault("lista_mov", [])
     st.session_state.setdefault("reset_inputs", False)
     st.session_state.setdefault("flash_msg", None)
@@ -193,7 +194,7 @@ elif modulo == "Ejercicio 2":
 elif modulo == "Ejercicio 3":
     st.subheader("Ejercicio 3 – Uso de funciones desde una librería externa ")
     st.markdown("""En este ejercicio se utilizará la función calcular_disponibilidad_sistema del archivo de funciones libreria_funciones_proyecto1.py .
-                Luego de ingresar los parámetros requeridos, se ejecutará la función indicada y se mostrarán los resultados""")
+                Luego de ingresar los parámetros requeridos, se ejecutará la función indicada y se mostrarán los resultados.""")
                
     st.info("Calcular disponibilidad del sistema")
 
@@ -242,7 +243,9 @@ elif modulo == "Ejercicio 3":
 # *********************************************
 
 elif modulo == "Ejercicio 4":
-    st.subheader("Ejercicio 4")
+    st.subheader(" Ejercicio 4 – Uso de clases desde una librería externa con CRUD")
+    st.markdown("""En este ejercicio se utilizará la clase Servidor del archivo de clases libreria_clases_proyecto1.py .
+                Luego de ejecutar el método resumen, de la clase, se implementarán operaciones básicas tipo CRUD.""")
     st.info("Calcular disponibilidad del servidor")
 
     resumen={}
