@@ -86,7 +86,7 @@ elif modulo == "Ejercicio 1":
 
     col1, col2, col3 = st.columns(3)
     with col1:
-        if st.button("Registrar movimiento"):
+        if st.button("Registrar"):
             if concepto_mov and valor_mov != 0:
                 movimiento = [concepto_mov, tipo_mov, valor_mov]
                 ss.lista_mov.append([concepto_mov, tipo_mov, float(valor_mov)])
