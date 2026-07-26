@@ -9,7 +9,7 @@ st.set_page_config(page_title="Fundamentos de Programación - Python y Streamlit
 
 st.title("Fundamentos de Programación utilizando Python y Streamlit")
 st.sidebar.title("Menú")
-st.image("python.png")
+st.image("python_logo2.jpg")
 
 # *********************************************
 # NAVEGACIÓN ENTRE LAS OPCIONES DEL MENU
