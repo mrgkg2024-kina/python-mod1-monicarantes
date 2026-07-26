@@ -273,6 +273,7 @@ elif modulo == "Ejercicio 4":
                 st.session_state.tiempo_caida.append(tiempo_ch)
                 st.session_state.almacenamiento_total.append(almacenamiento_tgb)
                 st.session_state.almacenamiento_usado.append(almacenamiento_ugb)
+                st.session_state.dispo_pct.append(resumen["disponibilidad_pct"])
                 st.session_state["ultimo_resumen"] = resumen
                 st.session_state.clear_inputs = True
                 st.rerun()
@@ -296,6 +297,9 @@ elif modulo == "Ejercicio 4":
                  st.session_state.tiempo_caida[i] = tiempo_ch or st.session_state.tiempo_caida[i]
                  st.session_state.almacenamiento_total[i] = almacenamiento_tgb or st.session_state.almacenamiento_total[i]
                  st.session_state.almacenamiento_usado[i] = almacenamiento_ugb or st.session_state.almacenamiento_usado[i]
+                 =  st.session_state.dispo_pct.append(resumen["disponibilidad_pct"]) 
+                 
+                
                  try:
                     srv = lcp.Servidor(
                     st.session_state.servidores[i],
@@ -305,6 +309,8 @@ elif modulo == "Ejercicio 4":
                     st.session_state.almacenamiento_usado[i],
                     )
                     st.session_state["ultimo_resumen"] = srv.resumen()
+                    st.session_state.dispo_pct[i]=st.session_state["ultimo_resumen"]["disponibilidad_pct"]
+                     
                  except Exception as e:
                     st.warning(f"No se pudo recalcular el resumen: {e}")
                     st.session_state.clear_inputs = True    
@@ -318,6 +324,7 @@ elif modulo == "Ejercicio 4":
         st.session_state.tiempo_caida = []
         st.session_state.almacenamiento_total = []
         st.session_state.almacenamiento_usado = []
+        st.session_state.dispo_pct = []
         st.session_state.pop("ultimo_resumen", None)
         st.session_state.clear_inputs = True
         st.rerun()  
@@ -330,6 +337,7 @@ elif modulo == "Ejercicio 4":
             "Tiempo caída (h)": st.session_state.tiempo_caida,
             "Alm. total (GB)": st.session_state.almacenamiento_total,
             "Alm. usado (GB)": st.session_state.almacenamiento_usado
+            "Disponibilidad": st.session_state.dispo_pct
         })
         st.dataframe(df, use_container_width=True, hide_index=True)         
     
