@@ -261,28 +261,30 @@ elif modulo == "Ejercicio 4":
     almacenamiento_tgb = st.selectbox("Almacenamiento total (GB)", [300,350,400,450,500], key="almacenamiento_tgb_key")
     almacenamiento_ugb = st.selectbox("Almacenamiento usado (GB)", [250,300,350,400,450], key="almacenamiento_ugb_key")
 
-    if st.button("Calcular y guardar"):
-        if tiempo_th <= 0.0:
-           st.error("Tiempo total debe ser > 0.0")
-        elif tiempo_ch > tiempo_th:
-            st.error("La caída no puede superar el total.")
-        elif almacenamiento_ugb > almacenamiento_tgb:
-            st.error("El almacenamiento usado no puede superar el almacenamiento total.")
-        else:
-            if nombre_serv.strip():
-                servidor_nvo = lcp.Servidor(nombre_serv,tiempo_th,tiempo_ch,almacenamiento_tgb,almacenamiento_ugb)
-                resumen = servidor_nvo.resumen()
-                st.session_state.servidores.append(nombre_serv.strip())
-                st.session_state.tiempo_total.append(tiempo_th)
-                st.session_state.tiempo_caida.append(tiempo_ch)
-                st.session_state.almacenamiento_total.append(almacenamiento_tgb)
-                st.session_state.almacenamiento_usado.append(almacenamiento_ugb)
-                st.session_state.dispo_pct.append(resumen["disponibilidad_pct"])
-                st.session_state["ultimo_resumen"] = resumen
-                st.session_state.clear_inputs = True
-                st.rerun()
+    col1, col2 = st.columns(2)
+    with col1:
+        if st.button("Calcular y guardar"):
+            if tiempo_th <= 0.0:
+               st.error("Tiempo total debe ser > 0.0")
+            elif tiempo_ch > tiempo_th:
+                st.error("La caída no puede superar el total.")
+            elif almacenamiento_ugb > almacenamiento_tgb:
+                st.error("El almacenamiento usado no puede superar el almacenamiento total.")
             else:
-                st.error("Ingresa nombre del servidor")
+                if nombre_serv.strip():
+                    servidor_nvo = lcp.Servidor(nombre_serv,tiempo_th,tiempo_ch,almacenamiento_tgb,almacenamiento_ugb)
+                    resumen = servidor_nvo.resumen()
+                    st.session_state.servidores.append(nombre_serv.strip())
+                    st.session_state.tiempo_total.append(tiempo_th)
+                    st.session_state.tiempo_caida.append(tiempo_ch)
+                    st.session_state.almacenamiento_total.append(almacenamiento_tgb)
+                    st.session_state.almacenamiento_usado.append(almacenamiento_ugb)
+                    st.session_state.dispo_pct.append(resumen["disponibilidad_pct"])
+                    st.session_state["ultimo_resumen"] = resumen
+                    st.session_state.clear_inputs = True
+                    st.rerun()
+                else:
+                    st.error("Ingresa nombre del servidor")
 
     def cargar_ultimo():
         if not st.session_state.servidores:
@@ -295,10 +297,11 @@ elif modulo == "Ejercicio 4":
         st.session_state["almacenamiento_tgb_key"] = int(st.session_state.almacenamiento_total[i])
         st.session_state["almacenamiento_ugb_key"] = int(st.session_state.almacenamiento_usado[i])
 
-    st.button("Leer último registro", on_click=cargar_ultimo)
-    if st.session_state.get("msg_error"):
-        st.error(st.session_state.pop("msg_error"))
-    
+    with col2:
+        st.button("Leer último registro", on_click=cargar_ultimo)
+        if st.session_state.get("msg_error"):
+            st.error(st.session_state.pop("msg_error"))
+        
     
     if st.button("Actualizar último registro"):
         if not st.session_state.servidores:
