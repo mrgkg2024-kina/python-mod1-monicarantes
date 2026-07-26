@@ -265,6 +265,8 @@ elif modulo == "Ejercicio 4":
             st.error("El almacenamiento usado no puede superar el alamcenamiento total.")
         else:
             if nombre_serv.strip():
+                Servidor_nvo = lcp.servidor(nombre_serv,tiempo_th,tiempo_ch,almacenamiento_tgb,almacenamiento_ugb)
+                st.success(servidor_nvo.resumen())
                 st.session_state.servidores.append(nombre_serv.strip())
                 st.session_state.tiempo_total.append(tiempo_th)
                 st.session_state.tiempo_caida.append(tiempo_ch)
