@@ -280,10 +280,14 @@ elif modulo == "Ejercicio 4":
                 st.error("Ingresa nombre del servidor")
 
     if st.button("🗑️ Limpiar"):
-        st.session_state.servidores,st.session_state.tiempo_total,st.session_state.tiempo_caida,st.session_state.almacenamiento_total,
-        st.session_state.almacenamiento_usado =[]
+        st.session_state.servidores = []
+        st.session_state.tiempo_total = []
+        st.session_state.tiempo_caida = []
+        st.session_state.almacenamiento_total = []
+        st.session_state.almacenamiento_usado = []
+        st.session_state.pop("ultimo_resumen", None)
         st.session_state.clear_inputs = True
-        st.rerun()      
+        st.rerun()  
     
     if st.session_state.servidores:
         st.write(st.session_state.get("ultimo_resumen"))
