@@ -280,11 +280,11 @@ elif modulo == "Ejercicio 4":
                 st.error("Ingresa nombre del servidor")
 
         if session_state.servidores:
-            df = pd.DataFrame(resumen)
+            df = pd.DataFrame({
             "Tiempo total (h)": st.session_state.tiempo_total,
             "Tiempo caída (h)":  st.session_state.tiempo_caida,
-
-        st.dataframe(df, use_container_width=True, hide_index=True)
+            })
+            st.dataframe(df, use_container_width=True, hide_index=True)
             
          
          
