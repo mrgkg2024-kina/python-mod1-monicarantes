@@ -131,8 +131,8 @@ elif modulo == "Ejercicio 1":
 
 elif modulo == "Ejercicio 2":
     st.subheader(" Ejercicio 2 – Registro con NumPy, arrays y DataFrame")
-     st.markdown("""En este ejercicio se registrará información usando arreglos de NumPy. Cada vez que el usuario presione el botón de agregar, 
-     la información se almacenará en arrays y se mostrará en un DataFrame""")
+    st.markdown("""En este ejercicio se registrará información usando arreglos de NumPy. Cada vez que el usuario presione el botón de agregar, 
+                la información se almacenará en arrays y se mostrará en un DataFrame""")
      
     st.info("Por cada registro de producto, ingrese los siguientes datos:") 
 
