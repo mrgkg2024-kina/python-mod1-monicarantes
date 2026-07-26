@@ -237,8 +237,8 @@ elif modulo == "Ejercicio 4":
     st.session_state.setdefault("servidores", [])
     st.session_state.setdefault("tiempo_total", [])
     st.session_state.setdefault("tiempo_caida", [])
-    st.session_state.setdefault("almacenanmiento_total", [])
-    st.session_state.setdefault("almacenanmiento_usado", [])
+    st.session_state.setdefault("almacenamiento_total", [])
+    st.session_state.setdefault("almacenamiento_usado", [])
     st.session_state.setdefault("clear_inputs", False)
     
     # Limpiar en el siguiente ciclo antes de dibujar widgets
@@ -280,7 +280,7 @@ elif modulo == "Ejercicio 4":
                 st.error("Ingresa nombre del servidor")
 
     if st.session_state.servidores:
-        st.write(st.session_state["ultimo_resumen"]) 
+        st.write(st.session_state.get("ultimo_resumen"))
         df = pd.DataFrame({
             "Tiempo total (h)": st.session_state.tiempo_total,
             "Tiempo caída (h)":  st.session_state.tiempo_caida
