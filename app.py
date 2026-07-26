@@ -75,7 +75,7 @@ elif modulo == "Ejercicio 1":
         st.session_state["concepto_key"] = ""
         st.session_state["tipo_key"] = "Ingreso"
         st.session_state["valor_key"] = 0.0
-        st.session_states.reset_inputs = False  # desactivar flag
+        st.session_state.reset_inputs = False  # desactivar flag
        
     
     # Campos de entrada usando session state
