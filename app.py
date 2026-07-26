@@ -279,8 +279,8 @@ elif modulo == "Ejercicio 4":
             else:
                 st.error("Ingresa nombre del servidor")
 
-        if st.session_state["resumen2"]:
-            st.write(st.session_state["resumen2"])
+        #if st.session_state["resumen2"]:
+        st.write(st.session_state["resumen2"])
             
          
          
