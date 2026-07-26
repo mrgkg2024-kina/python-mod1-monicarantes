@@ -358,7 +358,7 @@ elif modulo == "Ejercicio 4":
             st.session_state.ok_eliminado = True  
             st.rerun()
 
-     if st.session_state.ok_eliminado:
+    if st.session_state.ok_eliminado:
         st.success("Último registro eliminado")
         st.session_state.ok_eliminado = False
     
