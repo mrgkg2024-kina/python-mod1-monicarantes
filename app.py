@@ -286,12 +286,12 @@ elif modulo == "Ejercicio 4":
         if not st.session_state.servidores:
             st.session_state["msg_error"] = "No hay registros para leer."
             return
-    i = -1
-    st.session_state["nombre_serv_key"] = st.session_state.servidores[i]
-    st.session_state["tth_key"] = float(st.session_state.tiempo_total[i])
-    st.session_state["tch_key"] = float(st.session_state.tiempo_caida[i])
-    st.session_state["almacenamiento_tgb_key"] = int(st.session_state.almacenamiento_total[i])
-    st.session_state["almacenamiento_ugb_key"] = int(st.session_state.almacenamiento_usado[i])
+        i = -1
+        st.session_state["nombre_serv_key"] = st.session_state.servidores[i]
+        st.session_state["tth_key"] = float(st.session_state.tiempo_total[i])
+        st.session_state["tch_key"] = float(st.session_state.tiempo_caida[i])
+        st.session_state["almacenamiento_tgb_key"] = int(st.session_state.almacenamiento_total[i])
+        st.session_state["almacenamiento_ugb_key"] = int(st.session_state.almacenamiento_usado[i])
 
     st.button("Leer último registro", on_click=cargar_ultimo)
     if st.session_state.get("msg_error"):
