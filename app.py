@@ -266,7 +266,7 @@ elif modulo == "Ejercicio 4":
         else:
             if nombre_serv.strip():
                 servidor_nvo = lcp.Servidor(nombre_serv,tiempo_th,tiempo_ch,almacenamiento_tgb,almacenamiento_ugb)
-                st.success(servidor_nvo.resumen())
+                st.write(servidor_nvo.resumen())
                 st.session_state.servidores.append(nombre_serv.strip())
                 st.session_state.tiempo_total.append(tiempo_th)
                 st.session_state.tiempo_caida.append(tiempo_ch)
