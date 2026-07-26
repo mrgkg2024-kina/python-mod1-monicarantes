@@ -261,7 +261,7 @@ elif modulo == "Ejercicio 4":
     almacenamiento_tgb = st.selectbox("Almacenamiento total (GB)", [300,350,400,450,500], key="almacenamiento_tgb_key")
     almacenamiento_ugb = st.selectbox("Almacenamiento usado (GB)", [250,300,350,400,450], key="almacenamiento_ugb_key")
 
-    col1, col2 = st.columns(2)
+    col1, col2, col3, col4, col5 = st.columns(5)
     with col1:
         if st.button("Calcular y guardar"):
             if tiempo_th <= 0.0:
@@ -302,79 +302,81 @@ elif modulo == "Ejercicio 4":
         if st.session_state.get("msg_error"):
             st.error(st.session_state.pop("msg_error"))
         
-    
-    if st.button("Actualizar último registro"):
-        if not st.session_state.servidores:
-            st.error("No hay registros para actualizar.")
-        elif tiempo_th <= 0.0:
-            st.error("Tiempo total debe ser > 0.0")
-        elif tiempo_ch > tiempo_th:
-            st.error("La caída no puede superar el total.")
-        elif almacenamiento_ugb > almacenamiento_tgb:
-            st.error("El almacenamiento usado no puede superar el almacenamiento total.")
-        else:
-            if nombre_serv.strip():
-                 i = - 1
-                 st.session_state.servidores[i] = nombre_serv or st.session_state.servidores[i]
-                 st.session_state.tiempo_total[i] = tiempo_th or st.session_state.tiempo_total[i]
-                 st.session_state.tiempo_caida[i] = tiempo_ch or st.session_state.tiempo_caida[i]
-                 st.session_state.almacenamiento_total[i] = almacenamiento_tgb or st.session_state.almacenamiento_total[i]
-                 st.session_state.almacenamiento_usado[i] = almacenamiento_ugb or st.session_state.almacenamiento_usado[i]
-                
-                 try:
-                    srv = lcp.Servidor(
-                    st.session_state.servidores[i],
-                    st.session_state.tiempo_total[i],
-                    st.session_state.tiempo_caida[i],
-                    st.session_state.almacenamiento_total[i],
-                    st.session_state.almacenamiento_usado[i],
-                    )
-                    st.session_state["ultimo_resumen"] = srv.resumen()
-                    st.session_state.dispo_pct[i]=st.session_state["ultimo_resumen"]["disponibilidad_pct"]
-                    st.session_state.clear_inputs = True
-                     
-                 except Exception as e:
-                    st.warning(f"No se pudo recalcular el resumen: {e}")
-                    
-                 # Activa flag y recarga
-                 st.session_state.ok_actualizado = True  
-                 st.rerun()
+    with col3:
+        if st.button("Actualizar último registro"):
+            if not st.session_state.servidores:
+                st.error("No hay registros para actualizar.")
+            elif tiempo_th <= 0.0:
+                st.error("Tiempo total debe ser > 0.0")
+            elif tiempo_ch > tiempo_th:
+                st.error("La caída no puede superar el total.")
+            elif almacenamiento_ugb > almacenamiento_tgb:
+                st.error("El almacenamiento usado no puede superar el almacenamiento total.")
             else:
-                st.error("Ingresa nombre del servidor")
+                if nombre_serv.strip():
+                     i = - 1
+                     st.session_state.servidores[i] = nombre_serv or st.session_state.servidores[i]
+                     st.session_state.tiempo_total[i] = tiempo_th or st.session_state.tiempo_total[i]
+                     st.session_state.tiempo_caida[i] = tiempo_ch or st.session_state.tiempo_caida[i]
+                     st.session_state.almacenamiento_total[i] = almacenamiento_tgb or st.session_state.almacenamiento_total[i]
+                     st.session_state.almacenamiento_usado[i] = almacenamiento_ugb or st.session_state.almacenamiento_usado[i]
+                    
+                     try:
+                        srv = lcp.Servidor(
+                        st.session_state.servidores[i],
+                        st.session_state.tiempo_total[i],
+                        st.session_state.tiempo_caida[i],
+                        st.session_state.almacenamiento_total[i],
+                        st.session_state.almacenamiento_usado[i],
+                        )
+                        st.session_state["ultimo_resumen"] = srv.resumen()
+                        st.session_state.dispo_pct[i]=st.session_state["ultimo_resumen"]["disponibilidad_pct"]
+                        st.session_state.clear_inputs = True
+                         
+                     except Exception as e:
+                        st.warning(f"No se pudo recalcular el resumen: {e}")
+                        
+                     # Activa flag y recarga
+                     st.session_state.ok_actualizado = True  
+                     st.rerun()
+                else:
+                    st.error("Ingresa nombre del servidor")
 
     if st.session_state.ok_actualizado:
         st.success("Último registro actualizado")
         st.session_state.ok_actualizado = False
-    
-    if st.button("Eliminar último registro"):
-        if not st.session_state.servidores:
-            st.error("No hay registros para eliminar.")
-        else:
-            # Eliminar último de cada lista
-            st.session_state.servidores.pop()
-            st.session_state.tiempo_total.pop()
-            st.session_state.tiempo_caida.pop()
-            st.session_state.almacenamiento_total.pop()
-            st.session_state.almacenamiento_usado.pop()
-            st.session_state.dispo_pct.pop()
-            st.session_state.pop("ultimo_resumen", None) 
-            st.session_state.ok_eliminado = True  
-            st.rerun()
+
+    with col4:
+        if st.button("Eliminar último registro"):
+            if not st.session_state.servidores:
+                st.error("No hay registros para eliminar.")
+            else:
+                # Eliminar último de cada lista
+                st.session_state.servidores.pop()
+                st.session_state.tiempo_total.pop()
+                st.session_state.tiempo_caida.pop()
+                st.session_state.almacenamiento_total.pop()
+                st.session_state.almacenamiento_usado.pop()
+                st.session_state.dispo_pct.pop()
+                st.session_state.pop("ultimo_resumen", None) 
+                st.session_state.ok_eliminado = True  
+                st.rerun()
 
     if st.session_state.ok_eliminado:
         st.success("Último registro eliminado")
         st.session_state.ok_eliminado = False
-    
-    if st.button("🗑️ Limpiar todo"):
-        st.session_state.servidores = []
-        st.session_state.tiempo_total = []
-        st.session_state.tiempo_caida = []
-        st.session_state.almacenamiento_total = []
-        st.session_state.almacenamiento_usado = []
-        st.session_state.dispo_pct = []
-        st.session_state.pop("ultimo_resumen", None)
-        st.session_state.clear_inputs = True
-        st.rerun()  
+
+    with col5:
+        if st.button("🗑️ Limpiar todo"):
+            st.session_state.servidores = []
+            st.session_state.tiempo_total = []
+            st.session_state.tiempo_caida = []
+            st.session_state.almacenamiento_total = []
+            st.session_state.almacenamiento_usado = []
+            st.session_state.dispo_pct = []
+            st.session_state.pop("ultimo_resumen", None)
+            st.session_state.clear_inputs = True
+            st.rerun()  
     
     if st.session_state.servidores:
         st.write(st.session_state.get("ultimo_resumen"))
