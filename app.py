@@ -276,23 +276,6 @@ elif modulo == "Ejercicio 4":
                 st.error("Ingresa nombre del servidor")
 
 
-
-
-
-
-
-
-            
-            servidor_aplic = lcp.servidor(nombre_serv,tiempo_th, tiempo_ch,almacenamiento_tgb, almacenamiento_ugb)
-            servidor_aplic.resumen()
-            
-            st.session_state.tiempos_th.append(th)
-            st.session_state.tiempos_ch.append(ch)
-            st.session_state.dispos.append(dispo)
-            st.write(res)
-            st.session_state.clear_inputs = True
-            st.rerun()
-
          
          
 
