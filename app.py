@@ -305,7 +305,7 @@ elif modulo == "Ejercicio 4":
                     st.session_state.almacenamiento_usado[i],
                     )
                     st.session_state["ultimo_resumen"] = srv.resumen()
-                except Exception as e:
+                 except Exception as e:
                     st.warning(f"No se pudo recalcular el resumen: {e}")
                     st.session_state.clear_inputs = True    
                     st.rerun()
