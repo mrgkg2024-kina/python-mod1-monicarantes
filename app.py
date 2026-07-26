@@ -131,7 +131,7 @@ elif modulo == "Ejercicio 1":
 
 elif modulo == "Ejercicio 2":
     st.subheader(" Ejercicio 2 – Registro con NumPy, arrays y DataFrame")
-    st.markdown("""En este ejercicio se registrará información usando arreglos de NumPy. Cada vez que el usuario presione el botón 'Agregar', 
+    st.markdown("""En este ejercicio se registrará información usando arreglos de NumPy. Cada vez que el usuario presione el botón Agregar, 
                 la información se almacenará en arrays y se mostrará en un DataFrame.""")
      
     st.info("Por cada registro de producto, ingrese los siguientes datos:") 
@@ -191,7 +191,10 @@ elif modulo == "Ejercicio 2":
 # *********************************************
 
 elif modulo == "Ejercicio 3":
-    st.subheader("Ejercicio 3")
+    st.subheader("Ejercicio 3 – Uso de funciones desde una librería externa ")
+    st.markdown("""Se utiliza la función calcular_disponibilidad_sistema, del archivo de funciones libreria_funciones_proyecto1.py ,
+                luego de ingresar los parámetros requeridos, se ejecutará la función indicada y se mostrarán los resultados""")
+               
     st.info("Calcular disponibilidad del sistema")
 
     res ={}
