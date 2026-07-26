@@ -315,7 +315,7 @@ elif modulo == "Ejercicio 4":
                  st.session_state.tiempo_caida[i] = tiempo_ch or st.session_state.tiempo_caida[i]
                  st.session_state.almacenamiento_total[i] = almacenamiento_tgb or st.session_state.almacenamiento_total[i]
                  st.session_state.almacenamiento_usado[i] = almacenamiento_ugb or st.session_state.almacenamiento_usado[i]
-                                 
+                 st.success("Último registro actualizado")                  
                 
                  try:
                     srv = lcp.Servidor(
@@ -327,7 +327,6 @@ elif modulo == "Ejercicio 4":
                     )
                     st.session_state["ultimo_resumen"] = srv.resumen()
                     st.session_state.dispo_pct[i]=st.session_state["ultimo_resumen"]["disponibilidad_pct"]
-                    st.success("Último registro actualizado")  
                     st.session_state.clear_inputs = True
                     st.rerun() 
                     
