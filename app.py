@@ -297,8 +297,7 @@ elif modulo == "Ejercicio 4":
                  st.session_state.tiempo_caida[i] = tiempo_ch or st.session_state.tiempo_caida[i]
                  st.session_state.almacenamiento_total[i] = almacenamiento_tgb or st.session_state.almacenamiento_total[i]
                  st.session_state.almacenamiento_usado[i] = almacenamiento_ugb or st.session_state.almacenamiento_usado[i]
-                 =  st.session_state.dispo_pct.append(resumen["disponibilidad_pct"]) 
-                 
+                                 
                 
                  try:
                     srv = lcp.Servidor(
