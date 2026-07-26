@@ -256,9 +256,9 @@ elif modulo == "Ejercicio 4":
     almacenamiento_tgb = st.selectbox("Almacenamiento total (GB)", [300,350,400,450,500], key="almacenamiento_tgb__key")
     almacenamiento_ugb = st.selectbox("Almacenamiento usado (GB)", [250,300,350,400,450], key="almacenamiento_ugb__key")
 
-     if st.button("Calcular y guardar"):
-         if tiempo_th <= 0:
-            st.error("Tiempo total debe ser > 0.")
+    if st.button("Calcular y guardar"):
+        if tiempo_th <= 0:
+           st.error("Tiempo total debe ser > 0.")
         elif tiempo_ch > tiempo_th:
             st.error("La caída no puede superar el total.")
         elif almacenamiento_ugb > almacenamiento_tgb:
