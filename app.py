@@ -349,6 +349,7 @@ elif modulo == "Ejercicio 4":
             st.session_state.almacenamiento_usado.pop()
             st.session_state.dispo_pct.pop()
             st.session_state.pop("ultimo_resumen", None) 
+            st.success("Último registro eliminado")
 
     
     if st.button("🗑️ Limpiar todo"):
