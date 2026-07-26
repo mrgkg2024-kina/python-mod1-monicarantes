@@ -92,8 +92,8 @@ elif modulo == "Ejercicio 1":
                 st.session_state.reset_inputs = True   # marcar para limpiar
                 st.session_state.flash_msg = "Movimiento registrado"   # <- mensaje
                 st.rerun()
-        else:
-            st.error("Completar datos para el registro")
+            else:
+                st.error("Completar datos para el registro")
     with col2:  
         if st.button("🗑️ Limpiar"):
             st.session_state.lista_mov = []
