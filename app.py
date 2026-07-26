@@ -282,7 +282,7 @@ elif modulo == "Ejercicio 4":
     if st.session_state.servidores:
         st.write(st.session_state.get("ultimo_resumen"))
         df = pd.DataFrame({
-            "Nombre_servidor":session_state.servidores,
+            "Nombre_servidor": st.session_state.servidores,
             "Tiempo total (h)": st.session_state.tiempo_total,
             "Tiempo caída (h)":  st.session_state.tiempo_caida,
             "Alm. total (GB)": session_state.almacenamiento_total,
