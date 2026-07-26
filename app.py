@@ -242,6 +242,7 @@ elif modulo == "Ejercicio 4":
     st.session_state.setdefault("almacenamiento_usado", [])
     st.session_state.setdefault("dispo_pct", [])
     st.session_state.setdefault("clear_inputs", False)
+    st.session_state.setdefault("ok_actualizado", False)
     
     # Limpiar en el siguiente ciclo antes de dibujar widgets
     if st.session_state.clear_inputs:
@@ -296,7 +297,11 @@ elif modulo == "Ejercicio 4":
     st.button("Leer último registro", on_click=cargar_ultimo)
     if st.session_state.get("msg_error"):
         st.error(st.session_state.pop("msg_error"))
-       
+
+
+    if st.session_state.ok_actualizado:
+        st.success("Último registro actualizado")
+        st.session_state.ok_actualizado = False
     
     if st.button("Actualizar último registro"):
         if not st.session_state.servidores:
@@ -315,7 +320,6 @@ elif modulo == "Ejercicio 4":
                  st.session_state.tiempo_caida[i] = tiempo_ch or st.session_state.tiempo_caida[i]
                  st.session_state.almacenamiento_total[i] = almacenamiento_tgb or st.session_state.almacenamiento_total[i]
                  st.session_state.almacenamiento_usado[i] = almacenamiento_ugb or st.session_state.almacenamiento_usado[i]
-                 st.success("Último registro actualizado")                  
                 
                  try:
                     srv = lcp.Servidor(
@@ -328,13 +332,15 @@ elif modulo == "Ejercicio 4":
                     st.session_state["ultimo_resumen"] = srv.resumen()
                     st.session_state.dispo_pct[i]=st.session_state["ultimo_resumen"]["disponibilidad_pct"]
                     st.session_state.clear_inputs = True
-                    #st.rerun() 
+                    st.rerun() 
                     
                      
                  except Exception as e:
                     st.warning(f"No se pudo recalcular el resumen: {e}")
-                    st.session_state.clear_inputs = True    
-                    st.rerun()
+                    
+                # Activa flag y recarga
+                st.session_state.clear_inputs = True    
+                st.rerun()
             else:
                 st.error("Ingresa nombre del servidor")
 
