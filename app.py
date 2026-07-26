@@ -192,8 +192,8 @@ elif modulo == "Ejercicio 2":
 
 elif modulo == "Ejercicio 3":
     st.subheader("Ejercicio 3 – Uso de funciones desde una librería externa ")
-    st.markdown("""En este ejercicio se utilizará la función calcular_disponibilidad_sistema del archivo de funciones libreria_funciones_proyecto1.py ,
-                luego de ingresar los parámetros requeridos, se ejecutará la función indicada y se mostrarán los resultados""")
+    st.markdown("""En este ejercicio se utilizará la función calcular_disponibilidad_sistema del archivo de funciones libreria_funciones_proyecto1.py .
+                Luego de ingresar los parámetros requeridos, se ejecutará la función indicada y se mostrarán los resultados""")
                
     st.info("Calcular disponibilidad del sistema")
 
