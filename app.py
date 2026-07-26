@@ -86,15 +86,21 @@ elif modulo == "Ejercicio 1":
 
     col1, col2, col3 = st.columns(3)
     with col1:
-        if st.button("Registrar"):
+        if st.button("Registrar movimiento"):
             if concepto_mov and valor_mov != 0:
                 movimiento = [concepto_mov, tipo_mov, valor_mov]
                 ss.lista_mov.append([concepto_mov, tipo_mov, float(valor_mov)])
                 ss.reset_inputs = True   # marcar para limpiar
                 ss.flash_msg = "Movimiento registrado"   # <- mensaje
                 st.rerun()
-                
-    with col2:                 
+
+    with col2:  
+        if st.button("🗑️ Limpiar"):
+            ss.lista_mov = []
+            ss.reset_inputs = True
+            st.rerun()
+
+    with col3:                 
         if st.button("Mostrar movimientos"):
             if ss.lista_mov:
                 #st.dataframe(
@@ -115,11 +121,7 @@ elif modulo == "Ejercicio 1":
             else:
                 st.info("No hay movimientos")
 
-    with col3:  
-        if st.button("🗑️ Limpiar"):
-            ss.lista_mov = []
-            ss.reset_inputs = True
-            st.rerun()
+
 
 # *********************************************
 # EJERCICIO 2
