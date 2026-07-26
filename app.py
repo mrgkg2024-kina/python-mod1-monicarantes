@@ -84,7 +84,7 @@ elif modulo == "Ejercicio 1":
     tipo_mov = st.selectbox("Tipo:", ["Ingreso", "Gasto"], key="tipo_key")
     valor_mov = st.number_input("Valor:", value=0.0, key="valor_key")
 
-    col1, col2 = st.columns(2)
+    col1, col2, col3 = st.columns(3)
     with col1:
         if st.button("Registrar movimiento"):
             if concepto_mov and valor_mov != 0:
@@ -114,11 +114,12 @@ elif modulo == "Ejercicio 1":
                 
             else:
                 st.info("No hay movimientos")
-                
-    if st.button("🗑️ Limpiar todo"):
-        ss.lista_mov = []
-        ss.reset_inputs = True
-        st.rerun()
+
+    with col3:  
+        if st.button("🗑️ Limpiar"):
+            ss.lista_mov = []
+            ss.reset_inputs = True
+            st.rerun()
 
 # *********************************************
 # EJERCICIO 2
