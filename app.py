@@ -67,7 +67,7 @@ elif modulo == "Ejercicio 1":
     st.session_state.setdefault("flash_msg", None)
 
     if st.session_state.flash_msg:
-        st.success(ss.flash_msg)
+        st.success(st.session_state.flash_msg)
         st.session_state.flash_msg = None
     
     # Si toca limpiar, hacerlo ANTES de crear los widgets
