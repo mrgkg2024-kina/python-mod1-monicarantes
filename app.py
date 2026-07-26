@@ -246,8 +246,8 @@ elif modulo == "Ejercicio 4":
         st.session_state["nombre_serv_key"] = ""
         st.session_state["tth_key"] = 0.0
         st.session_state["tch_key"] = 0.0
-        st.session_state["almacenamiento_tgb__key"] = 0.0
-        st.session_state["almacenamiento_ugb__key"] = 0.0
+        st.session_state["almacenamiento_tgb__key"] = 300
+        st.session_state["almacenamiento_ugb__key"] = 250
         st.session_state.clear_inputs = False
  
 
@@ -273,13 +273,15 @@ elif modulo == "Ejercicio 4":
                 st.session_state.tiempo_caida.append(tiempo_ch)
                 st.session_state.almacenanmiento_total.append(almacenamiento_tgb)
                 st.session_state.almacenanmiento_usado.append(almacenamiento_ugb)
-                st.write(resumen)
+                st.session_state["resumen2"] =resumen
                 st.session_state.clear_inputs = True
                 st.rerun()
             else:
                 st.error("Ingresa nombre del servidor")
 
-
+        if st.session_state["resumen2"]:
+            st.write(st.session_state["resumen2"])
+            
          
          
 
