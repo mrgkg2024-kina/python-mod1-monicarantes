@@ -336,6 +336,21 @@ elif modulo == "Ejercicio 4":
                     st.rerun()
             else:
                 st.error("Ingresa nombre del servidor")
+
+    if st.button("Eliminar último registro"):
+        if not st.session_state.servidores:
+            st.error("No hay registros para eliminar.")
+    else:
+        # Eliminar último de cada lista
+        st.session_state.servidores.pop()
+        st.session_state.tiempo_total.pop()
+        st.session_state.tiempo_caida.pop()
+        st.session_state.almacenamiento_total.pop()
+        st.session_state.almacenamiento_usado.pop()
+        st.session_state.dispo_pct.pop()
+        st.session_state.pop("ultimo_resumen", None) 
+
+
     
     if st.button("🗑️ Limpiar todo"):
         st.session_state.servidores = []
