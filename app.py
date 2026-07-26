@@ -297,11 +297,7 @@ elif modulo == "Ejercicio 4":
     st.button("Leer último registro", on_click=cargar_ultimo)
     if st.session_state.get("msg_error"):
         st.error(st.session_state.pop("msg_error"))
-
-
-    if st.session_state.ok_actualizado:
-        st.success("Último registro actualizado")
-        st.session_state.ok_actualizado = False
+    
     
     if st.button("Actualizar último registro"):
         if not st.session_state.servidores:
@@ -342,6 +338,10 @@ elif modulo == "Ejercicio 4":
             else:
                 st.error("Ingresa nombre del servidor")
 
+    if st.session_state.ok_actualizado:
+        st.success("Último registro actualizado")
+        st.session_state.ok_actualizado = False
+    
     if st.button("Eliminar último registro"):
         if not st.session_state.servidores:
             st.error("No hay registros para eliminar.")
