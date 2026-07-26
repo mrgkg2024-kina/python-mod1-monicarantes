@@ -289,7 +289,7 @@ elif modulo == "Ejercicio 4":
         elif almacenamiento_ugb > almacenamiento_tgb:
             st.error("El almacenamiento usado no puede superar el almacenamiento total.")
         else:
-             if nombre_serv.strip():
+            if nombre_serv.strip():
                  i = len(st.session_state.servidores) - 1
                  st.session_state.servidores[i] = nombre_serv or st.session_state.servidores[i]
                  st.session_state.tiempo_total[i] = tiempo_th or st.session_state.tiempo_total[i]
@@ -307,9 +307,8 @@ elif modulo == "Ejercicio 4":
                     st.session_state["ultimo_resumen"] = srv.resumen()
                 except Exception as e:
                     st.warning(f"No se pudo recalcular el resumen: {e}")
-                    
-                st.session_state.clear_inputs = True    
-                st.rerun()
+                    st.session_state.clear_inputs = True    
+                    st.rerun()
             else:
                 st.error("Ingresa nombre del servidor")
     
