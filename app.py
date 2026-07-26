@@ -271,15 +271,16 @@ elif modulo == "Ejercicio 4":
                 st.session_state.servidores.append(nombre_serv.strip())
                 st.session_state.tiempo_total.append(tiempo_th)
                 st.session_state.tiempo_caida.append(tiempo_ch)
-                st.session_state.almacenanmiento_total.append(almacenamiento_tgb)
-                st.session_state.almacenanmiento_usado.append(almacenamiento_ugb)
-                st.write(resumen)
+                st.session_state.almacenamiento_total.append(almacenamiento_tgb)
+                st.session_state.almacenamiento_usado.append(almacenamiento_ugb)
+                st.session_state["ultimo_resumen"] = resumen
                 st.session_state.clear_inputs = True
                 st.rerun()
             else:
                 st.error("Ingresa nombre del servidor")
 
     if st.session_state.servidores:
+        st.write(st.session_state["ultimo_resumen"]) 
         df = pd.DataFrame({
             "Tiempo total (h)": st.session_state.tiempo_total,
             "Tiempo caída (h)":  st.session_state.tiempo_caida
