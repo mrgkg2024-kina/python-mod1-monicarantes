@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import libreria_funciones_proyecto1 as lfp
-import libreria_clases_proyecto1 as lcp
+import librería_clases_proyecto1 as lcp
 from textwrap import dedent
 
 st.set_page_config(page_title="Fundamentos de Programación - Python y Streamlit", layout="centered")
