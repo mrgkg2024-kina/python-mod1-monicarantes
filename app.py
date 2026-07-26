@@ -9,8 +9,8 @@ st.set_page_config(page_title="Fundamentos de Programación - Python y Streamlit
 
 st.title("Fundamentos de Programación utilizando Python y Streamlit")
 st.sidebar.title("Menú")
-# st.image("python.png", width=150)
-# st.image ("Numpy_logo.jpg", width=150)
+# st.image("python.png", width=250)
+# st.image ("Numpy_logo.jpg", width=200)
 # st.image ("Pandas_logo2.jpg", width=150)
 
 col1, col2, col3 = st.columns([1,1,1])
