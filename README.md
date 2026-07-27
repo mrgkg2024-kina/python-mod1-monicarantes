@@ -6,8 +6,8 @@ Módulo 1 Python Fundamentals
 - requirements
 - README.md
 - Librerias importadas
-  -> libreria_clases_proyecto1.py
-  -> libreria_funciones_proyecto1.py
+  - libreria_clases_proyecto1.py
+  - libreria_funciones_proyecto1.py
 
 ## Ejercicios
 - Ejercicio 1 – Flujo de caja con listas
