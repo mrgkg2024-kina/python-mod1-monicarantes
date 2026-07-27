@@ -13,7 +13,7 @@ st.sidebar.title("Menú")
 col1, col2, col3 = st.columns([1,1,1])
 with col1: st.image("python_logo2.jpg", width=80)
 with col2: st.image("Numpy_logo.jpg", width=150)
-with col3: st.image("Pandas_logo2.jpg", width=120)
+with col3: st.image("Pandas_logo2.jpg", width=100)
 
 st.sidebar.image("DMC.png")
 
