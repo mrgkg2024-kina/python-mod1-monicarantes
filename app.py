@@ -45,7 +45,7 @@ if modulo == "Home":
     <h3 style="margin-top:0;">Descripción del proyecto</h3>
     <p>
       Se desarrolla una aplicación interactiva en Streamlit que integra los conceptos fundamentales
-      aprendidos durante el Módulo 1 del curso, incluyendo variables, estructuras de datos, control
+      aprendidos durante el Módulo 1 del curso; incluyendo variables, estructuras de datos, control
       de flujo, funciones, programación funcional, programación orientada a objetos (POO) y  operaciones básicas tipo CRUD.
     </p>
     </section>
