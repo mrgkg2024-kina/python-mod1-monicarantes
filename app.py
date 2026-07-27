@@ -24,7 +24,7 @@ st.sidebar.image("DMC.png",width=200)
 
 # Creamos un selectbox en la barra lateral.
 
-modulo = st.sidebar.selectbox("Elija un módulo", ["Home","Home2","Ejercicio 1", "Ejercicio 2", "Ejercicio 3", "Ejercicio 4"])
+modulo = st.sidebar.selectbox("Elija un módulo", ["Home","Ejercicio 1", "Ejercicio 2", "Ejercicio 3", "Ejercicio 4"])
 
 # *********************************************
 # HOME
@@ -62,40 +62,6 @@ if modulo == "Home":
     </div>
     """)
     st.components.v1.html(home_html, height=650, scrolling=True)
-
-elif modulo == "Home2":
-    st.markdown(dedent("""
-    <div class="wrap">
-      <section class="card">
-        <h3>Datos del proyecto</h3>
-        <ul>
-          <li><strong>Nombre completo del estudiante:</strong> Mónica Rantes García</li>
-          <li><strong>Nombre del curso o módulo:</strong> Especialización en Python for Analytics</li>
-          <li><strong>Año:</strong> 2026</li>
-        </ul>
-      </section>
-    
-      <section class="card">
-        <h3>Objetivo</h3>
-        <p>
-          Desarrollar una aplicación interactiva en Streamlit que integre los conceptos fundamentales
-          del Módulo 1: variables, estructuras de datos, control de flujo, funciones, programación funcional y POO.
-        </p>
-      </section>
-    
-      <section class="card">
-        <h3>Tecnologías utilizadas</h3>
-        <div class="chips">
-          <span class="chip">Python</span>
-          <span class="chip">Streamlit</span>
-          <span class="chip">NumPy</span>
-          <span class="chip">Pandas</span>
-        </div>
-      </section>
-    </div>
-"""), unsafe_allow_html=True)
-
-    
 
 # *********************************************
 # EJERCICIO 1
