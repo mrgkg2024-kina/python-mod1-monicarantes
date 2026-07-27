@@ -35,7 +35,7 @@ if modulo == "Home":
     <section style="background:#ffffff; border:1px solid #e5e7eb; border-radius:12px; padding:20px; margin-top:12px;">
     <h3 style="margin-top:0;">Datos del proyecto</h3>
     <ul style="line-height:1.6; padding-left:18px;">
-      <li><strong>Nombre completo del estudiante:</strong> Mónica Rantes García</li>
+      <li><strong>Nombre completo del estudiante:</strong> Mónica Tahiz Rantes García</li>
       <li><strong>Nombre del módulo:</strong> Módulo 1 – Python Fundamentals</li>
       <li><strong>Año:</strong> 2026</li>
     </ul>
