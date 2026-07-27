@@ -15,7 +15,7 @@ with col1: st.image("python_logo2.jpg", width=80)
 with col2: st.image("Numpy_logo.jpg", width=150)
 with col3: st.image("Pandas_logo2.jpg", width=100)
 
-st.sidebar.image("DMC.png")
+st.sidebar.image("DMC.png",width=200)
 
 
 # *********************************************
