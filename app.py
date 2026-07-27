@@ -7,7 +7,7 @@ from textwrap import dedent
 
 st.set_page_config(page_title="Fundamentos de Programación - Python y Streamlit", layout="centered")
 
-st.title("Proyecto 1 – Aplicación en Streamlit")
+st.title("Aplicación en Streamlit")
 st.sidebar.title("Menú")
 
 col1, col2, col3 = st.columns([1,1,1])
