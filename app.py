@@ -9,14 +9,13 @@ st.set_page_config(page_title="Fundamentos de Programación - Python y Streamlit
 
 st.title("Fundamentos de Programación utilizando Python y Streamlit")
 st.sidebar.title("Menú")
-# st.image("python.png", width=250)
-# st.image ("Numpy_logo.jpg", width=200)
-# st.image ("Pandas_logo2.jpg", width=150)
 
 col1, col2, col3 = st.columns([1,1,1])
-with col1: st.image("python.png", width=150)
+with col1: st.image("python_logo2.png", width=150)
 with col2: st.image("Numpy_logo.jpg", width=150)
 with col3: st.image("Pandas_logo2.jpg", width=150)
+
+st.sidebar.image("DMC.png")
 
 
 # *********************************************
